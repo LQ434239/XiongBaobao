@@ -1,0 +1,39 @@
+
+# pod 快速更新方法
+# pod install --verbose --no-repo-update
+# pod update --verbose --no-repo-update
+# 如果不加后面的参数，默认会升级CocoaPods的spec仓库，加一个参数可以省略这一步，然后速度就会提升不少。
+
+# 如果搜索不到sdk时：
+# 1、请先进行：pod setup
+# 2、再清空一下搜索索引，让pod重建索引：
+# rm ~/Library/Caches/CocoaPods/search_index.json
+
+#搜索不到最新版本的解决方法：
+#1、执行rm ~/Library/Caches/CocoaPods/search_index.json 删除索引的缓存再搜索，如果这样也搜索不到的话更新cocoapods
+#2、执行 pod repo update --verbose 更新成功之后就没问题了
+
+# 取消下一行的注释，以定义项目的全局平台
+platform :ios, '9.0'
+# 忽略引入库的所有警告（强迫症者的福音啊）
+inhibit_all_warnings!
+#swift 项目中通过 pod引入第三方必须加上 use_frameworks！
+use_frameworks!
+
+target 'XiongBaobao' do
+#    pod 'Alamofire'
+    pod 'AFNetworking'
+    pod 'DZNEmptyDataSet'
+    pod 'IQKeyboardManagerSwift'
+    pod 'JPush'
+    pod 'Qiniu'
+    pod 'Masonry'
+    pod 'MJRefresh'
+    pod 'MBProgressHUD'
+    pod 'SDWebImage'
+    pod 'SDWebImage/GIF'
+#    pod 'SnapKit'
+#    pod 'SVProgressHUD'
+#    pod 'SwiftyJSON'
+    pod 'WMPageController'
+end
