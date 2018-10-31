@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		9D91395FED17B9748C8EA8F9 /* Pods_XiongBaobao.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED9F69DD542408E93BCB84B /* Pods_XiongBaobao.framework */; };
+		E1024457217DC1AC00791547 /* XBBGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1024456217DC1AC00791547 /* XBBGuideViewController.swift */; };
+		E14B092E2182BA500054E494 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B092D2182BA500054E494 /* UserAPI.swift */; };
+		E14B09322182BA6D0054E494 /* MineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B09312182BA6D0054E494 /* MineAPI.swift */; };
+		E14B09362182BB0D0054E494 /* PreserveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B09352182BB0D0054E494 /* PreserveAPI.swift */; };
+		E14B09382182BB240054E494 /* ContractAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B09372182BB240054E494 /* ContractAPI.swift */; };
+		E14B093A2182BB300054E494 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B09392182BB300054E494 /* HomeAPI.swift */; };
+		E14B093E2182ED720054E494 /* OtherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B093D2182ED720054E494 /* OtherAPI.swift */; };
+		E160AE822187FF59008A2D1D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE812187FF59008A2D1D /* HomeViewModel.swift */; };
+		E160AE85218801C7008A2D1D /* QrCodeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE84218801C7008A2D1D /* QrCodeAPI.swift */; };
+		E160AE8D21886733008A2D1D /* XBBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE8C21886733008A2D1D /* XBBLoginViewController.swift */; };
+		E160AE8F2188678C008A2D1D /* XBBForgetPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE8E2188678C008A2D1D /* XBBForgetPwdViewController.swift */; };
+		E160AE912188680B008A2D1D /* XBBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE902188680B008A2D1D /* XBBLoginViewModel.swift */; };
 		E1693416216DB27C0083E9CA /* XBBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1693415216DB27C0083E9CA /* XBBBaseViewController.swift */; };
 		E169341A216DB2F30083E9CA /* XBBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1693419216DB2F30083E9CA /* XBBHomeViewController.swift */; };
 		E169341C216DB3600083E9CA /* XBBMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169341B216DB3600083E9CA /* XBBMineViewController.swift */; };
@@ -32,12 +44,25 @@
 		E1D9E7632174782C0032E39D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9E7622174782C0032E39D /* UIButton+Extension.swift */; };
 		E1D9E76521747DB60032E39D /* XBBBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9E76421747DB60032E39D /* XBBBaseTableView.swift */; };
 		E1DE60AC217873DD00910EFC /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE60AB217873DD00910EFC /* MBProgressHUD+Extension.swift */; };
-		E1DE60AE217895FC00910EFC /* XBBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE60AD217895FC00910EFC /* XBBNetworkManager.swift */; };
+		E1EF86CB2179D7AF00FD46ED /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF86CA2179D7AF00FD46ED /* CacheManager.swift */; };
+		E1EF86CD2179DFFD00FD46ED /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF86CC2179DFFD00FD46ED /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		46C2E710E977C35E4B548476 /* Pods-XiongBaobao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiongBaobao.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiongBaobao/Pods-XiongBaobao.release.xcconfig"; sourceTree = "<group>"; };
 		AED9F69DD542408E93BCB84B /* Pods_XiongBaobao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiongBaobao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1024456217DC1AC00791547 /* XBBGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBGuideViewController.swift; sourceTree = "<group>"; };
+		E14B092D2182BA500054E494 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		E14B09312182BA6D0054E494 /* MineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineAPI.swift; sourceTree = "<group>"; };
+		E14B09352182BB0D0054E494 /* PreserveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreserveAPI.swift; sourceTree = "<group>"; };
+		E14B09372182BB240054E494 /* ContractAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractAPI.swift; sourceTree = "<group>"; };
+		E14B09392182BB300054E494 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		E14B093D2182ED720054E494 /* OtherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherAPI.swift; sourceTree = "<group>"; };
+		E160AE812187FF59008A2D1D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E160AE84218801C7008A2D1D /* QrCodeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeAPI.swift; sourceTree = "<group>"; };
+		E160AE8C21886733008A2D1D /* XBBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBLoginViewController.swift; sourceTree = "<group>"; };
+		E160AE8E2188678C008A2D1D /* XBBForgetPwdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBForgetPwdViewController.swift; sourceTree = "<group>"; };
+		E160AE902188680B008A2D1D /* XBBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBLoginViewModel.swift; sourceTree = "<group>"; };
 		E1693415216DB27C0083E9CA /* XBBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBBaseViewController.swift; sourceTree = "<group>"; };
 		E1693419216DB2F30083E9CA /* XBBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBHomeViewController.swift; sourceTree = "<group>"; };
 		E169341B216DB3600083E9CA /* XBBMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMineViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +90,8 @@
 		E1D9E7622174782C0032E39D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		E1D9E76421747DB60032E39D /* XBBBaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBBaseTableView.swift; sourceTree = "<group>"; };
 		E1DE60AB217873DD00910EFC /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
-		E1DE60AD217895FC00910EFC /* XBBNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBNetworkManager.swift; sourceTree = "<group>"; };
+		E1EF86CA2179D7AF00FD46ED /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		E1EF86CC2179DFFD00FD46ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EF360522390AE04CE53DD6CB /* Pods-XiongBaobao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiongBaobao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiongBaobao/Pods-XiongBaobao.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +130,7 @@
 				E1693412216DAE140083E9CA /* Controller */,
 				E1693411216DAE110083E9CA /* Model */,
 				E1693410216DAE0F0083E9CA /* View */,
+				E14B094121832D560054E494 /* ViewModel */,
 			);
 			path = "Home(首页)";
 			sourceTree = "<group>";
@@ -113,9 +140,123 @@
 			children = (
 				E169340F216DADFF0083E9CA /* Controller */,
 				E169340E216DADFC0083E9CA /* Model */,
+				E14B094221832D690054E494 /* ViewModel */,
 				E169340D216DADF60083E9CA /* View */,
 			);
 			path = "Mine(我的)";
+			sourceTree = "<group>";
+		};
+		E14B09272182B9ED0054E494 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B09392182BB300054E494 /* HomeAPI.swift */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		E14B09282182B9F70054E494 /* 合同 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B09372182BB240054E494 /* ContractAPI.swift */,
+			);
+			path = "合同";
+			sourceTree = "<group>";
+		};
+		E14B09292182B9FC0054E494 /* 保全 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B09352182BB0D0054E494 /* PreserveAPI.swift */,
+			);
+			path = "保全";
+			sourceTree = "<group>";
+		};
+		E14B092A2182BA000054E494 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B09312182BA6D0054E494 /* MineAPI.swift */,
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
+		E14B092B2182BA0F0054E494 /* 其他 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B093D2182ED720054E494 /* OtherAPI.swift */,
+			);
+			path = "其他";
+			sourceTree = "<group>";
+		};
+		E14B092C2182BA160054E494 /* 用户 */ = {
+			isa = PBXGroup;
+			children = (
+				E14B092D2182BA500054E494 /* UserAPI.swift */,
+			);
+			path = "用户";
+			sourceTree = "<group>";
+		};
+		E14B094121832D560054E494 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E160AE812187FF59008A2D1D /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E14B094221832D690054E494 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E160AE8321880199008A2D1D /* 扫一扫 */ = {
+			isa = PBXGroup;
+			children = (
+				E160AE84218801C7008A2D1D /* QrCodeAPI.swift */,
+			);
+			path = "扫一扫";
+			sourceTree = "<group>";
+		};
+		E160AE862188668A008A2D1D /* Login(登录) */ = {
+			isa = PBXGroup;
+			children = (
+				E160AE8A218866B8008A2D1D /* Controller */,
+				E160AE882188669F008A2D1D /* Model */,
+				E160AE872188669C008A2D1D /* View */,
+				E160AE89218866A2008A2D1D /* ViewModel */,
+			);
+			path = "Login(登录)";
+			sourceTree = "<group>";
+		};
+		E160AE872188669C008A2D1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E160AE882188669F008A2D1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E160AE89218866A2008A2D1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E160AE902188680B008A2D1D /* XBBLoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E160AE8A218866B8008A2D1D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E160AE8E2188678C008A2D1D /* XBBForgetPwdViewController.swift */,
+				E160AE8C21886733008A2D1D /* XBBLoginViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E169340D216DADF60083E9CA /* View */ = {
@@ -145,7 +286,6 @@
 			children = (
 				E169342E216DDD700083E9CA /* 保全 */,
 				E169342B216DDD590083E9CA /* 合同 */,
-				E169342D216DDD690083E9CA /* 首页 */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,13 +331,6 @@
 			path = "合同";
 			sourceTree = "<group>";
 		};
-		E169342D216DDD690083E9CA /* 首页 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "首页";
-			sourceTree = "<group>";
-		};
 		E169342E216DDD700083E9CA /* 保全 */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +343,8 @@
 			children = (
 				E1693431216DDFF30083E9CA /* API */,
 				E1693430216DDEDC0083E9CA /* URL */,
-				E1DE60AD217895FC00910EFC /* XBBNetworkManager.swift */,
+				E1EF86CC2179DFFD00FD46ED /* NetworkManager.swift */,
+				E1EF86CA2179D7AF00FD46ED /* CacheManager.swift */,
 			);
 			path = "Network(网络)";
 			sourceTree = "<group>";
@@ -226,6 +360,13 @@
 		E1693431216DDFF30083E9CA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				E14B09292182B9FC0054E494 /* 保全 */,
+				E14B09282182B9F70054E494 /* 合同 */,
+				E14B092B2182BA0F0054E494 /* 其他 */,
+				E160AE8321880199008A2D1D /* 扫一扫 */,
+				E14B09272182B9ED0054E494 /* 首页 */,
+				E14B092A2182BA000054E494 /* 我的 */,
+				E14B092C2182BA160054E494 /* 用户 */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -276,8 +417,9 @@
 		E1A3274D215E2B5400A54426 /* UI(界面) */ = {
 			isa = PBXGroup;
 			children = (
-				E1A32750215E2BCA00A54426 /* Main */,
 				E10589FE216C47E5004F7ABE /* Home(首页) */,
+				E160AE862188668A008A2D1D /* Login(登录) */,
+				E1A32750215E2BCA00A54426 /* Main */,
 				E10589FF216C47F6004F7ABE /* Mine(我的) */,
 			);
 			path = "UI(界面)";
@@ -322,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				E1693415216DB27C0083E9CA /* XBBBaseViewController.swift */,
+				E1024456217DC1AC00791547 /* XBBGuideViewController.swift */,
 				E169341F216DB7F00083E9CA /* XBBNavigationController.swift */,
 				E169341D216DB7C90083E9CA /* XBBTabBarController.swift */,
 			);
@@ -471,33 +614,55 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-XiongBaobao/Pods-XiongBaobao-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-SwiftyJSONMapper/Moya_SwiftyJSONMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SBCycleScrollView/SBCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/WMPageController/WMPageController.framework",
+				"${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXMarqueeView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_SwiftyJSONMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WMPageController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZFPlayer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -512,26 +677,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CEFEE1216F24100010C43B /* UIImage+Extension.swift in Sources */,
+				E160AE8F2188678C008A2D1D /* XBBForgetPwdViewController.swift in Sources */,
+				E160AE822187FF59008A2D1D /* HomeViewModel.swift in Sources */,
 				E169341E216DB7C90083E9CA /* XBBTabBarController.swift in Sources */,
 				E1CEFEF1216F3B2A0010C43B /* StartAPIManager.swift in Sources */,
 				E1D9E7632174782C0032E39D /* UIButton+Extension.swift in Sources */,
 				E1693420216DB7F00083E9CA /* XBBNavigationController.swift in Sources */,
-				E1DE60AE217895FC00910EFC /* XBBNetworkManager.swift in Sources */,
 				E1693416216DB27C0083E9CA /* XBBBaseViewController.swift in Sources */,
+				E14B09322182BA6D0054E494 /* MineAPI.swift in Sources */,
 				E1693428216DCC7C0083E9CA /* XBBCommon.swift in Sources */,
+				E14B092E2182BA500054E494 /* UserAPI.swift in Sources */,
 				E1D9E76521747DB60032E39D /* XBBBaseTableView.swift in Sources */,
+				E14B093A2182BB300054E494 /* HomeAPI.swift in Sources */,
 				E1CEFEFA216F45540010C43B /* String+Extension.swift in Sources */,
+				E160AE8D21886733008A2D1D /* XBBLoginViewController.swift in Sources */,
+				E1024457217DC1AC00791547 /* XBBGuideViewController.swift in Sources */,
 				E169342A216DDA1E0083E9CA /* XBBNotificationName.swift in Sources */,
 				E169341A216DB2F30083E9CA /* XBBHomeViewController.swift in Sources */,
+				E14B093E2182ED720054E494 /* OtherAPI.swift in Sources */,
+				E160AE912188680B008A2D1D /* XBBLoginViewModel.swift in Sources */,
 				E1CEFEF4216F3E080010C43B /* NSObject+AlertView.swift in Sources */,
+				E14B09382182BB240054E494 /* ContractAPI.swift in Sources */,
 				E1CEFED2216EE1780010C43B /* UIView+Extension.swift in Sources */,
 				E1DE60AC217873DD00910EFC /* MBProgressHUD+Extension.swift in Sources */,
 				E1693433216DE05C0083E9CA /* XBBInterfaceURL.swift in Sources */,
 				E1CEFEF6216F3FC00010C43B /* NSObject+Controller.swift in Sources */,
 				E1CEFEEF216F2CBA0010C43B /* ConfigurationManager.swift in Sources */,
 				E169341C216DB3600083E9CA /* XBBMineViewController.swift in Sources */,
+				E1EF86CB2179D7AF00FD46ED /* CacheManager.swift in Sources */,
 				E1CEFEE9216F24B80010C43B /* WRNavigationBar.swift in Sources */,
 				E1A3273B215E2AF700A54426 /* AppDelegate.swift in Sources */,
+				E14B09362182BB0D0054E494 /* PreserveAPI.swift in Sources */,
+				E160AE85218801C7008A2D1D /* QrCodeAPI.swift in Sources */,
+				E1EF86CD2179DFFD00FD46ED /* NetworkManager.swift in Sources */,
 				E1693424216DC4AA0083E9CA /* XBBColor.swift in Sources */,
 				E1CEFECF216EDEFA0010C43B /* XBBTabBar.swift in Sources */,
 			);

@@ -28,8 +28,8 @@ class XBBTabBarController: UITabBarController {
         controller.tabBarItem.title = title
         controller.tabBarItem.image = UIImage.init(named: image)
         controller.tabBarItem.selectedImage = UIImage.init(named: image)
-        controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kTextColor9], for: .normal)
-        controller.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kThemeColor], for: .selected)
+        controller.tabBarItem.setTitleTextAttributes([.foregroundColor: kTextColor9], for: .normal)
+        controller.tabBarItem.setTitleTextAttributes([.foregroundColor: kThemeColor], for: .selected)
         
         let nav = XBBNavigationController.init(rootViewController: controller)
         self.addChild(nav)

@@ -14,26 +14,35 @@
 #2、执行 pod repo update --verbose 更新成功之后就没问题了
 
 # 取消下一行的注释，以定义项目的全局平台
-platform :ios, '9.0'
+platform :ios, '10.0'
 # 忽略引入库的所有警告（强迫症者的福音啊）
 inhibit_all_warnings!
 #swift 项目中通过 pod引入第三方必须加上 use_frameworks！
 use_frameworks!
 
 target 'XiongBaobao' do
-#    pod 'Alamofire'
-    pod 'AFNetworking'
+    pod 'Cache'
     pod 'DZNEmptyDataSet'
     pod 'IQKeyboardManagerSwift'
     pod 'JPush'
+    #跑马灯
+    pod 'JXMarqueeView'
+    # 图片加载、缓存
+    pod 'Kingfisher'
     pod 'Qiniu'
-    pod 'Masonry'
+    pod 'Moya'
+    pod 'Moya-SwiftyJSONMapper'
     pod 'MJRefresh'
     pod 'MBProgressHUD'
-    pod 'SDWebImage'
-    pod 'SDWebImage/GIF'
-#    pod 'SnapKit'
-#    pod 'SVProgressHUD'
+    pod 'ObjectMapper'
+    # 函数响应式编程
+    pod 'RxCocoa'
+#    pod 'RxDataSources'
+    pod 'SBCycleScrollView'
+    pod 'SnapKit'
 #    pod 'SwiftyJSON'
+#    pod 'Toast'
+    pod 'TZImagePickerController'
     pod 'WMPageController'
+    pod 'ZFPlayer'
 end

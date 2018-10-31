@@ -12,7 +12,7 @@ let kWhite       = UIColor.white
 
 // 颜色
 let kThemeColor: UIColor = UIColor("5f84ff")
-let kLineColor:  UIColor = UIColor("f2f2f2")
+let kLineColor : UIColor = UIColor("f2f2f2")
 let kTextColor3: UIColor = UIColor("333333")
 let kTextColor6: UIColor = UIColor("666666")
 let kTextColor9: UIColor = UIColor("999999")

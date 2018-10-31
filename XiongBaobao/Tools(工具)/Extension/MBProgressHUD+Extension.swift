@@ -20,13 +20,15 @@ enum HUDPostion {
 }
 
 /** 成功图片 */
-let kHUDSuccessImageName = "HUD_success"
+private let kHUDSuccessImageName = "HUD_success"
 /** 失败图片 */
-let kHUDErrorImageName = "HUD_error"
+private let kHUDErrorImageName = "HUD_error"
 /** 提示图片 */
-let kHUDInfoImageName = "HUD_info"
+private let kHUDInfoImageName = "HUD_info"
 
-let autoHideTime = 30.0
+let kAutoHideTime = 1.5
+
+private let kFontSize = FontSize(15)
 
 let kFitstView: UIView = (UIApplication.shared.keyWindow?.subviews.first)!
 
@@ -34,7 +36,7 @@ extension MBProgressHUD {
     private static func setHUD(title: String?, autoHidden: Bool) -> MBProgressHUD {
         let hud = MBProgressHUD.showAdded(to: kFitstView, animated: true)
         hud.label.text = title
-        hud.label.font = FontSize(15)
+        hud.label.font = kFontSize
         hud.label.adjustsFontSizeToFitWidth = true
         hud.label.numberOfLines = 0
         hud.removeFromSuperViewOnHide = true
@@ -42,7 +44,7 @@ extension MBProgressHUD {
         hud.contentColor = UIColor.white
         hud.bezelView.backgroundColor = UIColor.black
         if autoHidden {
-            hud.hide(animated: true, afterDelay: autoHideTime)
+            hud.hide(animated: true, afterDelay: kAutoHideTime)
         }
         return hud
     }
@@ -54,6 +56,11 @@ extension MBProgressHUD {
     
     static func showLoadToView(view: UIView) -> MBProgressHUD {
         return self.setHUD(title: nil, autoHidden: false)
+    }
+    
+    static func showDown(model: MBProgressHUDMode, text: String) {
+        let hud = self.setHUD(title: text, autoHidden: false)
+        hud.mode = model
     }
     
     static func showText(_ text: String) {
@@ -82,28 +89,25 @@ extension MBProgressHUD {
     
     static func showSuccessWithText(_ text: String) {
         let hud = self.setHUD(title: text, autoHidden: true)
-        hud.mode = .customView
-        hud.isSquare = true;
-        hud.customView = UIImageView.init(image: UIImage.init(named: kHUDSuccessImageName)?.withRenderingMode(.alwaysTemplate))
+        self.custom(hud: hud, text: text, image: kHUDSuccessImageName)
     }
     
     static func showErrorWithText(_ text: String) {
         let hud = self.setHUD(title: text, autoHidden: true)
-        hud.mode = .customView
-        hud.isSquare = true;
-        hud.customView = UIImageView.init(image: UIImage.init(named: kHUDErrorImageName)?.withRenderingMode(.alwaysTemplate))
+        self.custom(hud: hud, text: text, image: kHUDErrorImageName)
     }
     
     static func showInfoWithText(_ text: String) {
         let hud = self.setHUD(title: text, autoHidden: true)
-        hud.mode = .customView
-        hud.isSquare = true;
-        hud.customView = UIImageView.init(image: UIImage.init(named: kHUDInfoImageName)?.withRenderingMode(.alwaysTemplate))
+        self.custom(hud: hud, text: text, image: kHUDInfoImageName)
     }
     
-    static func showDown(model: MBProgressHUDMode, text: String) {
-        let hud = self.setHUD(title: text, autoHidden: true)
-        hud.mode = model
+    private static func custom(hud: MBProgressHUD, text: String, image: String) {
+        hud.mode = .customView
+        if (text.widthForFont(font: kFontSize)) <= ("最多五个字" .widthForFont(font: kFontSize)) {
+            hud.isSquare = true;
+        }
+        hud.customView = UIImageView.init(image: UIImage.init(named: image)?.withRenderingMode(.alwaysTemplate))
     }
     
     static func dismiss() {

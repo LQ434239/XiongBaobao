@@ -9,10 +9,9 @@
 #ifndef XiongBaobao_Brdging_Header_h
 #define XiongBaobao_Brdging_Header_h
 
+//#import <Toast/UIView+Toast.h>
 #import <MJRefresh/MJRefresh.h>
-//#import <SDWebImage>
 #import <MBProgressHUD/MBProgressHUD.h>
-#import <Masonry/Masonry.h>
-#import <AFNetworking/AFNetworking.h>
+#import <ZFPlayer/ZFPlayer.h>
 
-#endif /* XiongBaobao_Brdging_Header_h */
+#endif /* XiongBaobao_Brdging_Header_h */    

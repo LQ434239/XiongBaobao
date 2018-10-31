@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import SnapKit
+
+// MARK: log日志
+func NSLog<T>( _ message: T, file: String = #file, method: String = #function, line: Int = #line){
+    #if DEBUG
+    print("\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
+    #endif
+}
 
 /** 第三方应用 */
 // Bugly
@@ -23,8 +31,6 @@ let kUUID           = UUID().uuidString
 let kVersion        = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 
 let kLineSize       = 1.0 / UIScreen.main.scale
-
-//weak var weakSelf = self
 
 let kMainBounds   = UIScreen.main.bounds
 let KScreenWidth  = kMainBounds.size.width

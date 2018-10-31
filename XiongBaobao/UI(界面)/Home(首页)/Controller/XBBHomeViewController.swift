@@ -10,28 +10,33 @@ import UIKit
 
 class XBBHomeViewController: XBBBaseViewController {
     
-    var num = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
         self.view.addSubview(tableView)
         
-        MBProgressHUD.showErrorWithText("")
+        
+        NetworkManager.shard.requestJSONDataWithTarget(target: HomeAPI.bannerList, success: { (result) in
+            
+        }, failure: { (message) in
+            print(message)
+        }) { (netError) in
+            print(netError)
+        }
     }
     
     // MARK: lazy
-    
     private lazy var tableView: XBBBaseTableView = {
-        let tableView = XBBBaseTableView(frame:self.view.bounds, style: .plain)
+        let tableView = XBBBaseTableView(frame:CGRect(x: 0, y: 0, width: KScreenWidth, height: KScreenHeight - kTabBarHeight), style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = kWhite
+        
         weak var weakSelf = self
         tableView.againLoad = {
             
         }
-        tableView.state(state: .networkFailState)
+//        tableView.state(state: .loading)
         
 //        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () in
 //            tableView.mj_header.endRefreshing()
@@ -39,13 +44,14 @@ class XBBHomeViewController: XBBBaseViewController {
 //        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () in
 //             tableView.mj_footer.endRefreshing()
 //        })
+        
         return tableView
     }()
 }
 
 extension XBBHomeViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return num
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

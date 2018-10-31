@@ -10,10 +10,10 @@ import UIKit
 import DZNEmptyDataSet
 
 enum TableViewState {
-    case defaultState
-    case loadingState
-    case noDataState
-    case networkFailState
+    case `default`
+    case loading
+    case noData
+    case networkFail
 }
 
 //定义闭包类型(这个是在类外部定义)
@@ -22,7 +22,7 @@ typealias callBackType = () -> () //这个是在类外部定义
 class XBBBaseTableView: UITableView {
     
     var temNoDataTitle: String = ""
-    var noDataImgName: String = ""
+    var noDataImgName: String = "noData"
     var noDataTitle: String = ""
     var noDataDetailTitle: String = ""
     var isShowAgainGet: Bool = false
@@ -45,7 +45,6 @@ class XBBBaseTableView: UITableView {
     private lazy var bgView: UIView = {
         let view = UIView.init()
         view.backgroundColor = kWhite
-        
         return view
     }()
     
@@ -82,8 +81,8 @@ extension XBBBaseTableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.bgView.frame = self.frame
-        self.loadImgV.mas_makeConstraints { (make) in
-            make?.center.equalTo()(self.bgView)
+        self.loadImgV.snp.makeConstraints { (make) in
+            make.center.equalTo(self.bgView)
         }
     }
 }
@@ -94,11 +93,11 @@ extension XBBBaseTableView: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString.init(string: self.temNoDataTitle, attributes: [NSAttributedString.Key.font: BoldFontSize(16),NSAttributedString.Key.foregroundColor: kTextColor6])
+        return NSAttributedString.init(string: self.temNoDataTitle, attributes: [.font: BoldFontSize(16),.foregroundColor: kTextColor6])
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString.init(string: self.noDataDetailTitle, attributes: [NSAttributedString.Key.font: FontSize(12),NSAttributedString.Key.foregroundColor: kTextColor9])
+        return NSAttributedString.init(string: self.noDataDetailTitle, attributes: [.font: FontSize(12),.foregroundColor: kTextColor9])
     }
     
     func buttonImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> UIImage! {
@@ -136,15 +135,15 @@ extension XBBBaseTableView {
     
     func state(state: TableViewState) {
         switch state {
-        case .loadingState:
+        case .loading:
             self.showAnimate()
-        case .noDataState:
+        case .noData:
             self.temNoDataTitle = self.noDataTitle
             self.noDataImgName = "noData"
             self.noDataDetailTitle = "";
             self.isShowAgainGet = false;
             self.dismissAnimate()
-        case .networkFailState:
+        case .networkFail:
             self.temNoDataTitle = "无网络可用"
             self.noDataImgName = "net_error"
             self.noDataDetailTitle = "请检查当前网络状态及熊保宝网络权限";

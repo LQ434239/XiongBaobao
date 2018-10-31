@@ -23,12 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         ConfigurationManager.setLaunchOption()
-//        XBBProgressHUD.showLoadingWithStatus(status: "法第三发的说法")
-//        XBBProgressHUD.showSuccessWithStatus(status: "法第三发的说法")
-//        XBBProgressHUD.showText(text: "法第三发的说法")
-//        XBBProgressHUD.showErrorWithStatus(status: "辅导费抖擞地发挥")
         
-         DispatchQueue.main
         return true
     }
     

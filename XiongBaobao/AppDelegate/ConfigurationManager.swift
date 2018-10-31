@@ -7,20 +7,18 @@
 //
 
 import UIKit
-import SDWebImage
 import IQKeyboardManagerSwift
 
 class ConfigurationManager: NSObject {
     
    static func setLaunchOption() {
         self.xbb_initBaseSetup()
-        self.xbb_setSDWebImage()
         self.xbb_setIQKeyboardManager()
     }
     
    private static func xbb_initBaseSetup() {
         if #available(iOS 11.0, *) {
-//            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
             UICollectionView.appearance().contentInsetAdjustmentBehavior = .automatic
             
             UITableView.appearance().estimatedRowHeight = 0;
@@ -28,11 +26,6 @@ class ConfigurationManager: NSObject {
             UITableView.appearance().estimatedSectionFooterHeight = 0;
         }
         UIButton.appearance().isExclusiveTouch = false
-    }
-    
-    private static func xbb_setSDWebImage() {
-        SDImageCache.shared().config.shouldDecompressImages = false
-        SDWebImageDownloader.shared().shouldDecompressImages = false
     }
     
     private static func xbb_setIQKeyboardManager() {

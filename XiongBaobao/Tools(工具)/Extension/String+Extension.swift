@@ -12,18 +12,13 @@ extension String {
     
     //字符串的宽
     func widthForFont(font: UIFont) -> CGFloat {
-        let width = self.size(withAttributes: [NSAttributedString.Key.font:font]).width
+        let width = self.size(withAttributes: [.font:font]).width
         return width
     }
     
     //字符串的高
     func heigthForFont(font: UIFont, width: CGFloat) -> CGFloat {
-        //CGFloat(MAXFLOAT)
-        let size: CGSize = CGSize.init(width: width, height:CGFloat(MAXFLOAT))
-        let rect: CGRect = self.boundingRect(with: size, options:(NSStringDrawingOptions(rawValue: NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
-            NSStringDrawingOptions.usesFontLeading.rawValue |
-            NSStringDrawingOptions.truncatesLastVisibleLine.rawValue)), attributes: [NSAttributedString.Key.font:font], context:nil);
-        return rect.height
+        return self.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options:.usesLineFragmentOrigin, attributes: [.font:font], context:nil).height
     }
     
     /*

@@ -13,7 +13,7 @@ class XBBNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
         WRNavigationBar.defaultShadowImageHidden = true
         WRNavigationBar.defaultNavBarTintColor = kTextColor3
     }

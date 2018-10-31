@@ -25,7 +25,7 @@ extension UIButton {
                                              spacing: CGFloat) {
         let imageSize = self.imageRect(forContentRect: self.frame)
         let titleFont = self.titleLabel?.font!
-        let titleSize = title.size(withAttributes: [NSAttributedString.Key.font: titleFont!])
+        let titleSize = title.size(withAttributes: [.font: titleFont!])
         
         var titleInsets: UIEdgeInsets
         var imageInsets: UIEdgeInsets

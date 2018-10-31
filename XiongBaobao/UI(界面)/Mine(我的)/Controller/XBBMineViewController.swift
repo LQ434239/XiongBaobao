@@ -14,8 +14,4 @@ class XBBMineViewController: XBBBaseViewController {
         super.viewDidLoad()
         self.navBarBackgroundAlpha = 0
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.navigationController?.pushViewController(XBBHomeViewController(), animated: true)
-    }
 }
