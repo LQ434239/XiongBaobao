@@ -12,38 +12,32 @@ class XBBHomeViewController: XBBBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
-        self.view.addSubview(tableView)
         
-        
-        NetworkManager.shard.requestJSONDataWithTarget(target: HomeAPI.bannerList, success: { (result) in
-            
-        }, failure: { (message) in
-            print(message)
-        }) { (netError) in
-            print(netError)
+        self.view.addSubview(self.tableView)
+        self.tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(kNavHeight)
+            make.left.right.equalTo(0)
+            make.bottom.equalTo(-kTabBarHeight)
         }
     }
     
     // MARK: lazy
-    private lazy var tableView: XBBBaseTableView = {
-        let tableView = XBBBaseTableView(frame:CGRect(x: 0, y: 0, width: KScreenWidth, height: KScreenHeight - kTabBarHeight), style: .plain)
+    private lazy var tableView: BaseTableView = {
+        let tableView = BaseTableView(frame:CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = kWhite
+        tableView.backgroundColor = UIColor.white
         
-        weak var weakSelf = self
-        tableView.againLoad = {
+        tableView.againLoad = { [unowned self] in
             
         }
-//        tableView.state(state: .loading)
         
-//        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () in
-//            tableView.mj_header.endRefreshing()
-//        })
-//        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () in
-//             tableView.mj_footer.endRefreshing()
-//        })
+        //        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () in
+        //            tableView.mj_header.endRefreshing()
+        //        })
+        //        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: { () in
+        //             tableView.mj_footer.endRefreshing()
+        //        })
         
         return tableView
     }()
@@ -60,7 +54,7 @@ extension XBBHomeViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.backgroundColor = RandomColor()
+        cell.backgroundColor = randomColor()
         return cell
     }
     

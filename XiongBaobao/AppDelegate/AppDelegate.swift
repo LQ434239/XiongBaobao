@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,11 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = XBBTabBarController()
-        self.window?.backgroundColor = kWhite
+        
+        if (UserDefaults.standard.string(forKey: "accessToken") != nil) {
+            self.window?.rootViewController = XBBTabBarController()
+        } else {
+            let nav = XBBNavigationController.init(rootViewController: XBBLoginViewController())
+            self.window?.rootViewController = nav
+        }
+        
+        self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
         ConfigurationManager.setLaunchOption()
+        StartAPIManager.setLaunchOption()
         
         return true
     }

@@ -1,5 +1,5 @@
 //
-//  XBBCommon.swift
+//  Common.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/10/10.
@@ -8,6 +8,12 @@
 
 import UIKit
 import SnapKit
+
+@_exported import Moya
+@_exported import ObjectMapper
+@_exported import RxCocoa
+@_exported import RxSwift
+
 
 // MARK: log日志
 func NSLog<T>( _ message: T, file: String = #file, method: String = #function, line: Int = #line){
@@ -25,57 +31,60 @@ let kWeiXinAppID = "wx49bd773c69118fed"
 //极光
 let kJPushAppKey = "164dd140c33b4c52cd192624"
 
-let kDelegateWindow = UIApplication.shared.delegate?.window
+let keyWindow = UIApplication.shared.keyWindow
+let kAppdelegate = UIApplication.shared.delegate as! AppDelegate
+let kDelegateWindow = kAppdelegate.window
 
 let kUUID           = UUID().uuidString
 let kVersion        = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 
-let kLineSize       = 1.0 / UIScreen.main.scale
+let kLineSize: CGFloat       = 1.0 
+//let kLineSize       = 1.0 / UIScreen.main.scale
 
 let kMainBounds   = UIScreen.main.bounds
-let KScreenWidth  = kMainBounds.size.width
-let KScreenHeight = kMainBounds.size.height
+let kScreenWidth  = kMainBounds.size.width
+let kScreenHeight = kMainBounds.size.height
 
 // 判断是否为 iPhone X
-let isIphoneX = KScreenHeight >= 812 ? true : false
+let isIphoneX = kScreenHeight >= 812 ? true: false
 // 导航栏
-let kStatuHeight: CGFloat     = isIphoneX ? 44 : 20
-let kTopSafeSpace: CGFloat    = isIphoneX ? 24 : 0
+let kStatuHeight: CGFloat     = isIphoneX ? 44: 20
+let kTopSafeSpace: CGFloat    = isIphoneX ? 24: 0
 let kNavHeight: CGFloat       = 64 + kTopSafeSpace
 // TabBar
-let kBottomSafeSpace: CGFloat = isIphoneX ? 34 : 0
+let kBottomSafeSpace: CGFloat = isIphoneX ? 34: 0
 let kTabBarHeight: CGFloat    = 49 + kBottomSafeSpace
+
+//分页控制器
+let kPageMenuHeight: CGFloat = 45.0
+
+var isProxyC: Bool = false //是否是代理合同
 
 // MARK: 适配屏幕（iphone 6）
 // 宽度比
-let kWidthRatio  = KScreenWidth / 375.0
+let kWidthRatio  = kScreenWidth / 375.0
 // 高度比
-let kHeightRatio = KScreenHeight / 667.0
-
-// 自适应
-func Adaptation(_ value : CGFloat) -> CGFloat {
-    return AdaptationWidth(value)
-}
+let kHeightRatio = kScreenHeight / 667.0
 
 // 自适应宽度
-func AdaptationWidth(_ value : CGFloat) -> CGFloat {
+func CGRatioWidth(_ value: CGFloat) -> CGFloat {
     return ceil(value) * kWidthRatio
 }
 
 // 自适应高度
-func AdaptationHeight(_ value : CGFloat) -> CGFloat {
+func CGRatioHeight(_ value: CGFloat) -> CGFloat {
     return ceil(value) * kHeightRatio
 }
 
 // MARK: 字体
 // 常规字体
-func FontSize(_ size : CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: AdaptationWidth(size))
+func FontSize(_ size: CGFloat) -> UIFont {
+    return UIFont.systemFont(ofSize: size)
 }
 
 // 加粗字体
-func BoldFontSize(_ size : CGFloat) -> UIFont {
-    return UIFont.boldSystemFont(ofSize: AdaptationWidth(size))
+func BoldFontSize(_ size: CGFloat) -> UIFont {
+    return UIFont.boldSystemFont(ofSize: size)
 }
 
 

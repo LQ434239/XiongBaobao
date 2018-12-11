@@ -55,7 +55,7 @@ class NetworkManager {
             case .success:
                 download(DefaultDownloadDir.path)
             case let .failure(error):
-                print(error.errorDescription!)
+                print("下载失败 = \(error.errorDescription!)")
                 failure(error.errorDescription!)
             }
         }
@@ -77,7 +77,7 @@ class NetworkManager {
                 }
                 if code == 200 {
                     success(data)
-                    NSLog(data)
+//                    NSLog(data)
                 } else if (code == 666) {
                     //身份变更
                 } else if (code == -1001) {
@@ -89,7 +89,8 @@ class NetworkManager {
             } catch {
                 failure(self.failureInfo)
             }
-        case .failure:
+        case let .failure(error):
+            print("msg = \(error.errorDescription!)")
             netError(self.netError)
         }
     }
@@ -101,8 +102,6 @@ class NetworkManager {
                 var request = try endpoint.urlRequest()
                 request.timeoutInterval = 15 //设置请求超时时间
 //                request.cachePolicy = .reloadRevalidatingCacheData
-                //            NSURLRequestReloadRevalidatingCacheData
-//                request.httpShouldHandleCookies = false
                 done(.success(request))
             } catch {
                 return

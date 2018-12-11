@@ -14,5 +14,4 @@ class XBBLoginViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
 }

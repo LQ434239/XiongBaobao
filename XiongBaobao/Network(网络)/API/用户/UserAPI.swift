@@ -88,7 +88,13 @@ extension UserAPI: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .versionSelect:
+            return .requestParameters(parameters: ["category":"1"], encoding: URLEncoding.default)
+        default:
+            return .requestPlain
+        }
+        
     }
     
     var headers: [String : String]? {
