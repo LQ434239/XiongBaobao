@@ -1,5 +1,5 @@
 //
-//  URL+ext.swift
+//  URL+Extension.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/12/10.
@@ -7,8 +7,9 @@
 //
 
 extension URL {
+    
+    //压缩视频
     func compressionVideo(handler: @escaping (URL) -> Void) {
-        
         let path = NSTemporaryDirectory().appending(kTimeStamp + ".mp4")
         //如果文件存在就删除
         try? FileManager.default.removeItem(atPath: path)

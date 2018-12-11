@@ -1,5 +1,5 @@
 //
-//  XBBBaseCMViewController.swift
+//  XBBBaseContractViewController.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class XBBBaseCMViewController: WMPageController {
+class XBBBaseContractViewController: WMPageController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -30,10 +30,23 @@ class XBBBaseCMViewController: WMPageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickSearchItem))
+    }
+    
+    @objc func clickSearchItem() {
+        let searchVC = PYSearchViewController(hotSearches:[], searchBarPlaceholder: "搜索") { (vc, searchBar, searchText) in
+            
+        }
+        searchVC?.showHotSearch = false
+        searchVC?.searchHistoryStyle = .borderTag
+        searchVC?.searchTextField.backgroundColor = kLineColor
+//        searchVC?.searchTextField.corner(radius: 10, color: kTextColor9, width: kLineSize)
+        let nav = XBBNavigationController.init(rootViewController: searchVC!)
+        self.present(nav, animated: false, completion: nil)
     }
 }
 
-extension XBBBaseCMViewController {
+extension XBBBaseContractViewController {
     override func menuView(_ menu: WMMenuView!, widthForItemAt index: Int) -> CGFloat {
         let width = super.menuView(menu, widthForItemAt: index)
         return width + 20
@@ -44,18 +57,20 @@ extension XBBBaseCMViewController {
     }
     
     override func pageController(_ pageController: WMPageController, titleAt index: Int) -> String {
+        isProxyC = index == 1
         return ["我的合同","代理合同"][index]
     }
     
     override func pageController(_ pageController: WMPageController, viewControllerAt index: Int) -> UIViewController {
-        let vc = XBBCMPageViewController()
-        vc.selectedItem = index
+        let vc = XBBContractPageViewController()
+        vc.isProxy = index == 1
         vc.progressWidth = 30;
         vc.progressViewIsNaughty = true
-        vc.progressColor = kThemeColor;
-        vc.titleColorNormal = kTextColor3;
-        vc.titleColorSelected = kThemeColor;
-        vc.menuViewStyle = .line
+        vc.progressColor = kThemeColor
+        vc.titleColorNormal = kTextColor3
+        vc.titleColorSelected = kThemeColor
+        vc.menuViewStyle = .line;
+        vc.titleSizeNormal = 14
         vc.automaticallyCalculatesItemWidths = true
         return vc
     }

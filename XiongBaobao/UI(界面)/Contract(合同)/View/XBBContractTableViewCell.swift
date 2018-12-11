@@ -50,7 +50,7 @@ class ContractTableViewCell: UITableViewCell {
         return view
     }()
     
-    var model: XBBContractModel? {
+    var model: ContractModel? {
         didSet {
             self.titleLabel.text = model!.name
             self.timeLabel.text = String((model?.time.prefix(10))!)

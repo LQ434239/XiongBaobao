@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 
 class UserInfo: Mappable {
     let rankNames: Array = ["","经销商","经销商","服务中心"]
@@ -56,8 +55,7 @@ class UserInfo: Mappable {
         }
     }
    
-    required init?(map: Map) {
-    }
+    required init?(map: Map) { }
     
     func mapping(map: Map) {
         userName <- map["userName"]

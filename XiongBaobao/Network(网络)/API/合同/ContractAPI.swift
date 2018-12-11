@@ -7,17 +7,15 @@
 //
 
 import Foundation
-import Moya
 
 enum ContractAPI {
-    case contractList //合同列表
+    case contractList(isProxyC: Bool, parameters: [String: Any]) //合同列表
     case sendContract //发送合同
-    case preserveContract //保全合同
+    case preserveContract(parameters: [String: Int]) //保全合同
     case signContract  //签署合同
-    case contractById  //合同信息
+    case contractById(parameters: [String: Any])  //合同信息
     case refreshContract  //签署合同手写签名后完成后及时刷新合同信息
-    case sign  //签名
-    case recallById  //撤销合同
+    case recallById(dataId: Int)  //撤销合同
     case viewContractById  //查看合同
 }
 
@@ -28,8 +26,8 @@ extension ContractAPI: TargetType {
     
     var path: String {
         switch self {
-        case .contractList:
-            return kContractBList
+        case .contractList(let isProxyC, _):
+            return isProxyC ? kContractBList: kContractCList
         case .sendContract:
             return kSendContract
         case .preserveContract:
@@ -40,8 +38,6 @@ extension ContractAPI: TargetType {
             return kContractById
         case .refreshContract:
             return kRefreshContractContent
-        case .sign:
-            return kSign
         case .recallById:
             return kRecallById
         case .viewContractById:
@@ -63,7 +59,18 @@ extension ContractAPI: TargetType {
     }
     
     var task: Task {
-        return Task.requestPlain
+        switch self {
+        case .contractList(_, let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .contractById(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .recallById(let dataId):
+            return .requestParameters(parameters: ["transmissionId": dataId], encoding: URLEncoding.default)
+        case .preserveContract(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        default:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {

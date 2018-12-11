@@ -22,7 +22,7 @@ class ShootCenterButton: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        xbb_setupView()
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +37,7 @@ class ShootCenterButton: UIView {
 }
 
 extension ShootCenterButton {
-    func xbb_setupView() {
+    func setupView() {
         self.centerLayer.frame = self.bounds
         self.centerLayer.path = self.path.cgPath
         self.centerLayer.strokeColor = UIColor(hex: "dad9d6").cgColor
@@ -47,12 +47,12 @@ extension ShootCenterButton {
         self.centerLayer.strokeEnd = 1
         self.layer.addSublayer(self.centerLayer)
         
-        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(xbb_longPress(gesture:)))
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
         self.isUserInteractionEnabled = true
         addGestureRecognizer(gesture)
     }
     
-    @objc func xbb_longPress(gesture: UILongPressGestureRecognizer) {
+    @objc func longPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             self.centerLayer.lineWidth = 18
             self.delegate?.shootStart(button: self)

@@ -1,5 +1,5 @@
 //
-//  LayoutModel.swift
+//  XBBLayoutModel.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/23.
@@ -7,7 +7,7 @@
 //
 
 
-class LayoutModel: NSObject {
+class XBBLayoutModel: NSObject {
     
 }
 

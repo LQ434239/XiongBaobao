@@ -17,6 +17,7 @@ class UpdateAlert: UIView {
             self.versionLabel.text = "V\(version)"
         }
     }
+    
     var content: String = "" {
         didSet {
             self.textView.text = content
@@ -71,7 +72,7 @@ class UpdateAlert: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        xbb_setupView()
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,7 +81,7 @@ class UpdateAlert: UIView {
 }
 
 extension UpdateAlert {
-    func xbb_setupView() {
+    func setupView() {
         self.frame = kMainBounds
         self.backgroundColor = colorWithRGBA(0, 0, 0, 0.3)
         
@@ -98,7 +99,7 @@ extension UpdateAlert {
             maxHeight = realHeight
         }
         
-        self.addSubview(self.updateView)
+        addSubview(self.updateView)
         self.updateView.snp.makeConstraints { (make) in
             make.center.equalTo(self)
             make.size.equalTo(CGSize(width: kScreenWidth - CGRatioWidth(80), height: maxHeight))

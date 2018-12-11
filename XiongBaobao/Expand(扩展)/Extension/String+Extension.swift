@@ -27,9 +27,22 @@ extension String {
         return self.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options:.usesLineFragmentOrigin, attributes: [.font:font], context:nil).height
     }
     
+    static func stringCustom(prefix: String, suffix: String, rangFont: UIFont, rangColor: UIColor) -> NSAttributedString {
+        let text = prefix + suffix
+        let style = NSMutableParagraphStyle() 
+        style.alignment = .center
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttributes([NSAttributedString.Key.paragraphStyle: style,
+                                        NSAttributedString.Key.font: rangFont,
+                                        NSAttributedString.Key.foregroundColor: rangColor],
+                                       range: NSRange(location: prefix.count, length: suffix.count)) 
+        return attributedString
+    }
+    
+    
     /*
      *  判断用户输入的密码是否符合规范，符合规范的密码要求：
-     1. 长度大于6位
+     1. 6-16位
      2. 密码中必须同时包含数字和字母
      */
     func judgePassWordLegal() -> Bool {
@@ -52,6 +65,15 @@ extension String {
             return (phoneTest.evaluate(with: self))
         }
         return result
+    }
+    
+    // 截取从index位开始之前的字符串
+    func subString(to index: Int) -> String {
+        return String(self[..<self.index(self.startIndex, offsetBy: index)])
+    }
+    // 截取从index位开始到末尾的字符串
+    func subString(from index: Int) -> String {
+        return String(self[self.index(self.startIndex, offsetBy: index)...])
     }
     
     //比较版本

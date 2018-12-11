@@ -12,6 +12,6 @@ class XBBLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
     }
 }

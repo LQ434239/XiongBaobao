@@ -10,7 +10,7 @@ import Foundation
 
 class UserManager {
     
-    var user: UserInfo?
+    private var user: UserInfo?
     
     static let shard = UserManager()
     
@@ -23,6 +23,8 @@ class UserManager {
     }
     
     func logout() {
-        UserDefaults.standard.removeObject(forKey: "token")
+        self.user = nil
+        UserDefaults.standard.removeObject(forKey: "isB")
+        UserDefaults.standard.removeObject(forKey: "accessToken")
     }
 }

@@ -60,7 +60,7 @@ class ShootToolBar: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        xbb_setupView()
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,13 +69,13 @@ class ShootToolBar: UIView {
 }
 
 extension ShootToolBar {
-    func xbb_setupView() {
+    func setupView() {
         
-        self.addSubview(self.closeButton)
-        self.addSubview(self.changeButton)
-        self.addSubview(self.shootButton)
-        self.addSubview(self.againButton)
-        self.addSubview(self.finishButton)
+        addSubview(self.closeButton)
+        addSubview(self.changeButton)
+        addSubview(self.shootButton)
+        addSubview(self.againButton)
+        addSubview(self.finishButton)
         
         self.closeButton.snp.makeConstraints { (make) in
             make.left.equalTo(10)

@@ -20,11 +20,18 @@ class XBBTabBarController: UITabBarController {
     
     func setupChildControllers() {
         addChildController(controller: XBBHomeViewController(), title: "首页", image: "home_tab_nor", selectedImage: "home_tab_down")
+        
+        let isB = UserDefaults.standard.integer(forKey: "isB")
+        let vc = isB == 1 ? XBBBaseContractViewController(): XBBMyContractViewController()
+        addChildController(controller: vc, title: "我的合同", image: "mine_tab_nor", selectedImage: "mine_tab_down")
+        
+        addChildController(controller: XBBMallViewController(), title: "产品", image: "mine_tab_nor", selectedImage: "mine_tab_down")
+        
         addChildController(controller: XBBMineViewController(), title: "我的", image: "mine_tab_nor", selectedImage: "mine_tab_down")
     }
     
     private func addChildController(controller: UIViewController, title: String, image: String, selectedImage: String) {
-//        controller.title = title
+        controller.title = title
         controller.tabBarItem.title = title
         controller.tabBarItem.image = UIImage.init(named: image)
         controller.tabBarItem.selectedImage = UIImage.init(named: image)

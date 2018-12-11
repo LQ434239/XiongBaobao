@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Moya
 
 enum MineAPI {
     case messageList //消息列表

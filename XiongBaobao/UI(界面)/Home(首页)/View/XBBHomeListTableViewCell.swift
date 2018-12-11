@@ -1,5 +1,5 @@
 //
-//  HomeListTableViewCell.swift
+//  XBBHomeListTableViewCell.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/28.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeListTableViewCell: UITableViewCell {
+class XBBHomeListTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,6 +19,6 @@ class HomeListTableViewCell: UITableViewCell {
     }
 }
 
-extension HomeListTableViewCell {
+extension XBBHomeListTableViewCell {
     
 }

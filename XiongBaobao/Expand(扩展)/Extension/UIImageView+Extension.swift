@@ -11,6 +11,7 @@ import Foundation
 var oldframe: CGRect?
 
 extension UIImageView {
+    // MARK: 浏览大图
     func scanBigImage() {
         let image = self.image
         

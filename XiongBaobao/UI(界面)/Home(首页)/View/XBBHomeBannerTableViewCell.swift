@@ -1,5 +1,5 @@
 //
-//  HomeBannerTableViewCell.swift
+//  XBBHomeBannerTableViewCell.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/28.
@@ -9,7 +9,7 @@
 import UIKit
 import SBCycleScrollView
 
-class HomeBannerTableViewCell: UITableViewCell {
+class XBBHomeBannerTableViewCell: UITableViewCell {
     
     private lazy var bannerView: CycleScrollView = {
         var options = CycleOptions()
@@ -37,7 +37,7 @@ class HomeBannerTableViewCell: UITableViewCell {
     }
 }
 
-extension HomeBannerTableViewCell: CycleScrollViewDelegate {
+extension XBBHomeBannerTableViewCell: CycleScrollViewDelegate {
     func didSelectedCycleScrollView(_ cycleScrollView: CycleScrollView, _ Index: NSInteger) {
         
     }

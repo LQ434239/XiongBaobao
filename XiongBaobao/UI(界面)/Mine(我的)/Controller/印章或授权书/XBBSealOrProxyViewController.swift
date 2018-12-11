@@ -15,4 +15,7 @@ class XBBSealOrProxyViewController: XBBBaseViewController {
         
     }
 
+    override func navigationShouldPop() -> Bool {
+        return false
+    }
 }

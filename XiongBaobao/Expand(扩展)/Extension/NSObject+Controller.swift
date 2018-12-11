@@ -15,13 +15,13 @@ extension NSObject {
             vc = (vc as! UITabBarController).selectedViewController
         } else if (vc?.isKind(of: UINavigationController.self))!{
             vc = (vc as! UINavigationController).visibleViewController
-        } else if ((vc?.presentedViewController) != nil){
+        } else if ((vc?.presentedViewController) != nil) {
             vc = vc?.presentedViewController
         }
         return vc!
     }
     
     static func currentNavigationController() -> UINavigationController {
-        return (self.currentController().navigationController)!
+        return (currentController().navigationController)!
     }
 }

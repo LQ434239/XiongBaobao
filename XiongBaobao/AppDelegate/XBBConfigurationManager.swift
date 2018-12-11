@@ -11,13 +11,13 @@ import IQKeyboardManagerSwift
 
 class XBBConfigurationManager: NSObject {
     
-    static func xbb_setLaunchOption() {
-        xbb_initBaseSetup()
-        xbb_setIQKeyboardManager()
-        xbb_setSVProgressHUD()
+    static func setLaunchOption() {
+        initBaseSetup()
+        setIQKeyboardManager()
+        setSVProgressHUD()
     }
     
-    static func xbb_initBaseSetup() {
+    static func initBaseSetup() {
         if #available(iOS 11.0, *) {
 //            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
 //            UICollectionView.appearance().contentInsetAdjustmentBehavior = .automatic
@@ -28,11 +28,11 @@ class XBBConfigurationManager: NSObject {
         }
     
         UIButton.appearance().isExclusiveTouch = false //避免在一个界面上同时点击多个UIButton导致同时响应多个方法
-        UITabBar.appearance().isTranslucent = false
+//        UITabBar.appearance().isTranslucent = false
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
     }
     
-    static func xbb_setIQKeyboardManager() {
+    static func setIQKeyboardManager() {
         let manager = IQKeyboardManager.shared
         manager.enableAutoToolbar = false
         manager.previousNextDisplayMode = .Default
@@ -40,13 +40,14 @@ class XBBConfigurationManager: NSObject {
         manager.keyboardDistanceFromTextField = 5.0
     }
     
-    static func xbb_setSVProgressHUD() {
+    static func setSVProgressHUD() {
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setFont(FontSize(16))
         SVProgressHUD.setShouldTintImages(false)
-        SVProgressHUD.setMinimumSize(CGSize(width: CGRatioWidth(100), height: CGRatioWidth(95)))
+        SVProgressHUD.setImageViewSize(CGSize(width: CGRatioWidth(40), height: CGRatioWidth(40)))
+        SVProgressHUD.setMinimumSize(CGSize(width: CGRatioWidth(95), height: CGRatioWidth(100)))
         SVProgressHUD.setErrorImage(UIImage(named: "HUD_error")!)
         SVProgressHUD.setSuccessImage(UIImage(named: "HUD_success")!)
         SVProgressHUD.setMinimumDismissTimeInterval(1.5)

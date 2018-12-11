@@ -52,7 +52,7 @@ extension DrawView {
             self.path?.move(to: currentPoint)
         } else if gesture.state == .changed {
             self.path?.addLine(to: currentPoint)
-            self.setNeedsDisplay()
+            setNeedsDisplay()
         }
         
         self.isDraw = true
@@ -61,14 +61,14 @@ extension DrawView {
     //清屏
     func clearScreen() {
         self.paths.removeAll()
-        self.setNeedsDisplay()
+        setNeedsDisplay()
         self.isDraw = false
     }
     
     //撤销
     func revoke() {
         self.paths.removeLast()
-        self.setNeedsDisplay()
+        setNeedsDisplay()
     }
     
     //橡皮擦
@@ -79,12 +79,12 @@ extension DrawView {
     //设置颜色
     func setPenColor(color: UIColor) {
         self.lineColor = color
-        self.setNeedsDisplay()
+        setNeedsDisplay()
     }
     
     //设置线条宽度
     func setPenWidth(width: CGFloat) {
         self.lineWidth = width
-        self.setNeedsDisplay()
+        setNeedsDisplay()
     }
 }

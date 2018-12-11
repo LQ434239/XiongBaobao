@@ -183,7 +183,7 @@ extension UINavigationBar:WRAwakeProtocol
         
         var titleColor:UIColor?
         for attribute in originTitleTextAttributes {
-            if attribute.key == NSAttributedStringKey.foregroundColor {
+            if attribute.key == NSAttributedString.Key.foregroundColor {
                 titleColor = attribute.value as? UIColor
                 break
             }
@@ -194,8 +194,8 @@ extension UINavigationBar:WRAwakeProtocol
             return
         }
 
-        if attributes[NSAttributedStringKey.foregroundColor.rawValue] == nil {
-            attributes.updateValue(originTitleColor, forKey: NSAttributedStringKey.foregroundColor.rawValue)
+        if attributes[NSAttributedString.Key.foregroundColor.rawValue] == nil {
+            attributes.updateValue(originTitleColor, forKey: NSAttributedString.Key.foregroundColor.rawValue)
         }
         wr_setTitleTextAttributes(attributes)
     }
@@ -237,12 +237,12 @@ extension UINavigationController: WRFatherAwakeProtocol
     fileprivate func setNeedsNavigationBarUpdate(titleColor: UIColor)
     {
         guard let titleTextAttributes = navigationBar.titleTextAttributes else {
-            navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:titleColor]
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:titleColor]
             return
         }
         
         var newTitleTextAttributes = titleTextAttributes
-        newTitleTextAttributes.updateValue(titleColor, forKey: NSAttributedStringKey.foregroundColor)
+        newTitleTextAttributes.updateValue(titleColor, forKey: NSAttributedString.Key.foregroundColor)
         navigationBar.titleTextAttributes = newTitleTextAttributes
     }
     
@@ -317,7 +317,7 @@ extension UINavigationController: WRFatherAwakeProtocol
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(popNeedDisplay))
         // UITrackingRunLoopMode: 界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响
         // NSRunLoopCommonModes contains kCFRunLoopDefaultMode and UITrackingRunLoopMode
-        displayLink?.add(to: RunLoop.main, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -334,7 +334,7 @@ extension UINavigationController: WRFatherAwakeProtocol
     @objc func wr_popToRootViewControllerAnimated(_ animated: Bool) -> [UIViewController]?
     {
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(popNeedDisplay))
-        displayLink?.add(to: RunLoop.main, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -381,7 +381,7 @@ extension UINavigationController: WRFatherAwakeProtocol
     @objc func wr_pushViewController(_ viewController: UIViewController, animated: Bool)
     {
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(pushNeedDisplay))
-        displayLink?.add(to: RunLoop.main, forMode: .commonModes)
+        displayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -416,8 +416,7 @@ extension UINavigationController: WRFatherAwakeProtocol
 //==========================================================================
 extension UINavigationController: UINavigationBarDelegate
 {
-    public func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool
-    {
+    public func navigationBar(_ navigationBar: UINavigationBar, shouldPop item: UINavigationItem) -> Bool {
         if let topVC = topViewController,
            let coor = topVC.transitionCoordinator, coor.initiallyInteractive {
             if #available(iOS 10.0, *) {
@@ -431,13 +430,24 @@ extension UINavigationController: UINavigationBarDelegate
             }
             return true
         }
-        
-        let itemCount = navigationBar.items?.count ?? 0
-        let n = viewControllers.count >= itemCount ? 2 : 1
-        let popToVC = viewControllers[viewControllers.count - n]
-        
-        popToViewController(popToVC, animated: true)
-        return true
+              
+        let currentVC = self.topViewController
+        var shouldPop = true
+        shouldPop = (currentVC?.navigationShouldPop())!
+        if shouldPop {
+            DispatchQueue.main.async {
+                self.popViewController(animated: true)
+            }
+        } else {
+            for subview in navigationBar.subviews {
+                if 0.0 < subview.alpha && subview.alpha < 1.0 {
+                    UIView.animate(withDuration: 0.25) {
+                        subview.alpha = 1.0
+                    }
+                }
+            }
+        }
+        return shouldPop
     }
     
     // deal the gesture of return break off
@@ -697,6 +707,10 @@ extension UIViewController: WRAwakeProtocol
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.customNavBar, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
+    }
+    
+    public func navigationShouldPop() -> Bool {
+        return true
     }
     
     // swizzling two system methods: viewWillAppear(_:) and viewWillDisappear(_:)
@@ -960,10 +974,11 @@ extension WRNavigationBar
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. 定义 WRAwakeProtocol 协议
-public protocol WRAwakeProtocol: class {
+@objc public protocol WRAwakeProtocol: class {
     static func wrAwake()
+    @objc optional func navigationShouldPop() -> Bool
 }
-public protocol WRFatherAwakeProtocol: class
+ public protocol WRFatherAwakeProtocol: class
 {   // 1.1 定义 WRFatherAwakeProtocol ()
     static func fatherAwake()
 }

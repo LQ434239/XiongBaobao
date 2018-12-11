@@ -9,29 +9,38 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
+    var orientationMask: UIInterfaceOrientationMask = .portrait {
+        didSet {
+            if orientationMask.contains(.portrait) {
+                return UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+            } else {
+                return UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+            }
+        }
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
-        if (UserDefaults.standard.string(forKey: "accessToken") != nil) {
-            self.window?.rootViewController = XBBTabBarController()
+        if (UserDefaults.standard.string(forKey: "accessToken") == nil) {
+            self.window?.rootViewController = XBBNavigationController.init(rootViewController: XBBLoginViewController())
         } else {
-            let nav = XBBNavigationController.init(rootViewController: XBBLoginViewController())
-            self.window?.rootViewController = nav
+            self.window?.rootViewController = XBBTabBarController()
         }
         
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
-        ConfigurationManager.setLaunchOption()
-        StartAPIManager.setLaunchOption()
+        XBBConfigurationManager.setLaunchOption()
+        XBBStartAPIManager.setLaunchOption()
+        
+        UIButton.methodExchange()
         
         return true
     }
@@ -54,6 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationMask
     }
 }
 

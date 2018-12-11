@@ -1,5 +1,5 @@
 //
-//  EmptyDataTableView.swift
+//  XBBEmptyDataTableView.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/10/15.
@@ -16,7 +16,7 @@ enum TableViewState {
 
 typealias callBackType = () -> ()
 
-class EmptyDataTableView: UITableView {
+class XBBEmptyDataTableView: UITableView {
     
     var noDataImgName: String = "noData"
     var noDataTitle: String = ""
@@ -56,7 +56,7 @@ class EmptyDataTableView: UITableView {
     }
 }
 
-extension EmptyDataTableView {
+extension XBBEmptyDataTableView {
     func setupView() {
         self.backgroundColor = kBackgroundColor
         self.emptyDataSetSource = self
@@ -71,7 +71,7 @@ extension EmptyDataTableView {
     }
 }
 
-extension EmptyDataTableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension XBBEmptyDataTableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: self.noDataImgName)
     }
@@ -109,7 +109,7 @@ extension EmptyDataTableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     }
 }
 
-extension EmptyDataTableView {
+extension XBBEmptyDataTableView {
     
     func state(state: TableViewState) {
         switch state {

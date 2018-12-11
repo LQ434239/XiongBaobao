@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+/*
 import Cache
 
 enum XBBExpiry {
@@ -115,4 +117,4 @@ class CacheManager: NSObject {
             }
         })
     }
-}
+ }*/

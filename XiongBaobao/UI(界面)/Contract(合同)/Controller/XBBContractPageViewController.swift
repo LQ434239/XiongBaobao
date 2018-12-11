@@ -1,5 +1,5 @@
 //
-//  XBBCMPageViewController.swift
+//  XBBContractPageViewController.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/28.
@@ -8,37 +8,43 @@
 
 import UIKit
 
-class XBBCMPageViewController: WMPageController {
-
-    var selectedItem: Int = 0
+class XBBContractPageViewController: WMPageController {
+    
+    var isProxy: Bool = false //解决item分布不均
     
     var titleArray: [String] {
-        if self.selectedItem == 0 {
-            return ["全部","待审核","待我签署","已完成","已拒签","已失效"]
-        } else {
+        if self.isProxy {
             return ["全部","待审核","待发送","待我签署","待TA签署","已完成","已拒签","已失效"]
-        }
-    }
-    
-    var stateArray: [String] {
-        if self.selectedItem == 0 {
-            return ["","0","1","4","5","6"]
         } else {
-            return ["","0","3","1","2","4","5","6"]
+            return ["全部","待审核","待我签署","已完成","已拒签","已失效"]
         }
     }
     
+    var statusArray: [String] {
+        if self.isProxy {
+            return ["","0","3","1","2","4","5","6"]
+        } else {
+            return ["","0","1","4","5","6"]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _ = NotificationCenter.default.rx
+        .notification(Notification.Name(rawValue: notification_refreshContract))
+        .takeUntil(self.rx.deallocated) //页面销毁自动移除通知监听
+        .subscribe(onNext: { notification in
+            let userInfo = notification.userInfo as! [String: Int32]
+            self.selectIndex = isProxyC ? userInfo["index1"]!: userInfo["index0"]!
+        })
     }
 }
 
-extension XBBCMPageViewController {
+extension XBBContractPageViewController {
     override func menuView(_ menu: WMMenuView!, widthForItemAt index: Int) -> CGFloat {
         let width = super.menuView(menu, widthForItemAt: index)
-        return width + 10
+        return width + 5
     }
     
     override func numbersOfChildControllers(in inpageController: WMPageController) -> Int {
@@ -50,7 +56,8 @@ extension XBBCMPageViewController {
     }
     
     override func pageController(_ pageController: WMPageController, viewControllerAt index: Int) -> UIViewController {
-        let vc = XBBCMViewController()
+        let vc = XBBContractViewController()
+        vc.status = statusArray[index]
         return vc
     }
     

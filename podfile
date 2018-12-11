@@ -4,11 +4,6 @@
 # pod update --verbose --no-repo-update
 # 如果不加后面的参数，默认会升级CocoaPods的spec仓库，加一个参数可以省略这一步，然后速度就会提升不少。
 
-# 如果搜索不到sdk时：
-# 1、请先进行：pod setup
-# 2、再清空一下搜索索引，让pod重建索引：
-# rm ~/Library/Caches/CocoaPods/search_index.json
-
 #搜索不到最新版本的解决方法：
 #1、执行rm ~/Library/Caches/CocoaPods/search_index.json 删除索引的缓存再搜索，如果这样也搜索不到的话更新cocoapods
 #2、执行 pod repo update --verbose 更新成功之后就没问题了
@@ -21,12 +16,12 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'XiongBaobao' do
-    pod 'Cache'
+#    pod 'Cache'
     pod 'DZNEmptyDataSet'
     pod 'IQKeyboardManagerSwift'
     pod 'JPush'
     #跑马灯
-    pod 'JXMarqueeView'
+#    pod 'JXMarqueeView'
     # 图片加载、缓存
     pod 'Kingfisher'
     pod 'Qiniu'
@@ -34,17 +29,24 @@ target 'XiongBaobao' do
     pod 'Moya-SwiftyJSONMapper'
 #    pod 'Moya/RxSwift'
     pod 'MJRefresh'
-    pod 'MBProgressHUD'
+#    pod 'MBProgressHUD'
+#    pod 'NicooPlayer'
     pod 'ObjectMapper'
+    pod 'PYSearch'
     # 函数响应式编程
     pod 'RxCocoa'
 #    pod 'RxDataSources'
     pod 'SBCycleScrollView'
     pod 'SnapKit'
+    pod 'SVProgressHUD'
 #    pod 'SwiftyJSON'
 #    pod 'SwiftLint'
-#    pod 'Toast'
+    pod 'Toast'
     pod 'TZImagePickerController'
+    pod 'WechatOpenSDK'
     pod 'WMPageController'
     pod 'ZFPlayer'
+    pod 'ZFPlayer/AVPlayer'
+    pod 'ZFPlayer/ControlView'
+    
 end

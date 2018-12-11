@@ -31,7 +31,7 @@ class ShootButton: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(self.centerButton)
+        addSubview(self.centerButton)
         self.centerButton.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7))
         }

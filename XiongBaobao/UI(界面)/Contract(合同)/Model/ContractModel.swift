@@ -1,5 +1,5 @@
 //
-//  XBBContractModel.swift
+//  ContractModel.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/29.
@@ -43,7 +43,7 @@ class AppendiceModel: Mappable {
     }
 }
 
-class XBBContractModel: Mappable {
+class ContractModel: Mappable {
     var data_id: Int = 0
     var merchantId: Int? //发送方ID
     var signId: Int? //签署方ID

@@ -1,5 +1,5 @@
 //
-//  ContractInfoTableViewCell.swift
+//  XBBContractInfoTableViewCell.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContractInfoTableViewCell: UITableViewCell {
+class XBBContractInfoTableViewCell: UITableViewCell {
 
     private lazy var contractImgV: UIImageView = {
         let imgV = UIImageView(image: UIImage(named: "icon_ht"))
@@ -73,7 +73,7 @@ class ContractInfoTableViewCell: UITableViewCell {
     }
 }
 
-extension ContractInfoTableViewCell {
+extension XBBContractInfoTableViewCell {
     func setupView() {
         self.selectionStyle = .none
         

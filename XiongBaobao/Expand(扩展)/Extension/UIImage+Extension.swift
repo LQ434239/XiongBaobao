@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIColor {
+extension UIImage {
    static func image(_ color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
@@ -18,6 +18,19 @@ extension UIColor {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
+    }
+    
+    //压缩图片
+    func compress() -> Data {
+        //图片上传大小不能超过1M
+        let maxSize = 1 * 1024 * 1024
+        var quality: CGFloat = 0.9
+        var imageData = self.jpegData(compressionQuality: quality)
+        while (imageData?.count)! > maxSize && Int(quality) > maxSize {
+            quality -= 0.1
+            imageData = self.jpegData(compressionQuality: quality)
+        }
+        return imageData!
     }
 }
 

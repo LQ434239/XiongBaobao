@@ -1,5 +1,5 @@
 //
-//  SignContractToolView.swift
+//  XBBSignContractToolView.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/12/6.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol SignContractToolViewDelegate {
+protocol XBBSignContractToolViewDelegate {
     func clickSign(button: UIButton)
     func clickBook(button: UIButton)
     func clickSeal(button: UIButton)
     func clickNext(button: UIButton)
 }
 
-class SignContractToolView: UIView {
+class XBBSignContractToolView: UIView {
     
-    var delegate: SignContractToolViewDelegate?
+    var delegate: XBBSignContractToolViewDelegate?
     
     private lazy var signButton: UIButton = {
         let button = createButton(title: "手写签名", image: UIImage(named: "home_tab_nor")!, tag: 100)
@@ -73,7 +73,7 @@ class SignContractToolView: UIView {
     }
 }
 
-extension SignContractToolView {
+extension XBBSignContractToolView {
     func setupView() {
         
         self.backgroundColor = kBackgroundColor
@@ -121,7 +121,7 @@ extension SignContractToolView {
     }
 }
 
-extension SignContractToolView {
+extension XBBSignContractToolView {
     @objc func clickButton(button: UIButton) {
         if button.tag == 100 { self.delegate?.clickSign(button: button) }
 

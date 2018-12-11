@@ -1,5 +1,5 @@
 //
-//  StartAPIManager.swift
+//  XBBStartAPIManager.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/10/11.
@@ -22,15 +22,15 @@ class VersionModel: Mappable {
     }
 }
 
-class StartAPIManager: NSObject {
+class XBBStartAPIManager: NSObject {
 
-    static func xbb_setLaunchOption() {
-        xbb_versionSelect()
+    static func setLaunchOption() {
+        versionSelect()
 //        refreshUserInfo()
-        xbb_login()
+        login()
     }
     
-    static private func xbb_versionSelect() {
+    static private func versionSelect() {
         NetworkManager.shard.requestJSONDataWithTarget(target: UserAPI.versionSelect) { (status, result, message) in
             if status == .success {
                 guard let jsonDict = result!.dictionaryObject else { return }
@@ -43,7 +43,7 @@ class StartAPIManager: NSObject {
         }
     }
     
-    static private func xbb_refreshUserInfo() {
+    static private func refreshUserInfo() {
         NetworkManager.shard.requestJSONDataWithTarget(target: UserAPI.refreshUserInfo) { (status, result, message) in
             if status == .success {
                 guard let jsonDict = result!.dictionaryObject else { return }
@@ -57,7 +57,7 @@ class StartAPIManager: NSObject {
         }
     }
     
-    static private func xbb_login() {
+    static private func login() {
         NetworkManager.shard.requestJSONDataWithTarget(target: UserAPI.login) { (status, result, message) in
             if status == .success {
                 guard let jsonDict = result!.dictionaryObject else { return }

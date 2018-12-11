@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import Moya
 
 enum PreserveAPI {
-    case statistics //保全总数统计
+    case statistics //保全统计
     case applyCertificate //申请出证
     case certificateList // 已出证证书列表
     case basicList  //保全列表基础

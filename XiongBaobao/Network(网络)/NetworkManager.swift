@@ -7,20 +7,23 @@
 //
 
 import Foundation
-import Moya
 import SwiftyJSON
 import Result
 
-// 成功
-typealias SuccessBlock = (_ result: JSON) -> Void
+enum RespondStatus {
+    case success
+    case dataError
+    case netError
+}
+
 // 失败
 typealias FailureBlock = (_ failureMsg: String) -> Void
-// 网络错误
-typealias NetErrorBlock = (_ netError: String) -> Void
 // 上传或下载进度
 typealias ProgressBlock = (_ progress: ProgressResponse) -> Void
 // 下载
-typealias DownloadBlock = (_ path: String) -> Void
+typealias DownloadBlock = (_ path: URL) -> Void
+//数据响应
+typealias RespondBlock = (_ status: RespondStatus, _ result: JSON?,_ message: String?) -> Void
 
 class NetworkManager {
     static let shard = NetworkManager()
@@ -28,20 +31,20 @@ class NetworkManager {
     private let netError = "网络错误，请检查网络连接"
     
     // MARK: 请求JSON数据
-    func requestJSONDataWithTarget<T: TargetType>(target: T, success: @escaping SuccessBlock, failure: @escaping FailureBlock, netError: @escaping NetErrorBlock) {
+    func requestJSONDataWithTarget<T: TargetType>(target: T, respondBlock: @escaping RespondBlock) {
         let requestProvider = MoyaProvider<T>(endpointClosure: endpointClosure, requestClosure:requestTimeoutClosure(target: target))
         let _ = requestProvider.request(target) { (result) in
-            self.dataTask(result, success: success, failure: failure, netError: netError)
+            self.dataTask(result, respondBlock: respondBlock) 
         }
     }
     
     // MARK: 上传文件
-    func uploadFile<T: TargetType>(target: T, progress: @escaping ProgressBlock, success: @escaping SuccessBlock, failure: @escaping FailureBlock, netError: @escaping NetErrorBlock) {
+    func uploadFile<T: TargetType>(target: T, progress: @escaping ProgressBlock, respondBlock: @escaping RespondBlock, failure: @escaping FailureBlock) {
         let requestProvider = MoyaProvider<T>(endpointClosure: endpointClosure, requestClosure:requestTimeoutClosure(target: target))
         requestProvider.request(target, callbackQueue: .none, progress: { (uploadProgress: ProgressResponse) in
             progress(uploadProgress)
         }) { (result) in
-            self.dataTask(result, success: success, failure: failure, netError: netError)
+            self.dataTask(result, respondBlock: respondBlock)
         }
     }
     
@@ -53,16 +56,18 @@ class NetworkManager {
         }) { (result) in
             switch result {
             case .success:
-                download(DefaultDownloadDir.path)
+                let localLocation = DefaultDownloadDir.appendingPathComponent(fileName)
+                download(localLocation)
             case let .failure(error):
                 print("下载失败 = \(error.errorDescription!)")
+                SVProgressHUD.showError(withStatus: "下载失败")
                 failure(error.errorDescription!)
             }
         }
     }
     
-    // MARK: 统一处理数据
-    private func dataTask(_ result: Result<Moya.Response, MoyaError>, success: @escaping SuccessBlock, failure: @escaping FailureBlock, netError: @escaping NetErrorBlock) {
+    // MARK: 请求JSON数据
+    private func dataTask(_ result: Result<Moya.Response, MoyaError>, respondBlock: RespondBlock) {
         switch result {
         case let .success(response):
             do {
@@ -71,27 +76,23 @@ class NetworkManager {
                 let code = json["code"].intValue
                 let msg = json["msg"].stringValue
                 let data = json["data"]
-                guard let _ = json.dictionaryObject else {
-                    print("msg = \(msg)")
-                    return
-                }
+                guard let _ = json.dictionaryObject else { return }
                 if code == 200 {
-                    success(data)
-//                    NSLog(data)
+                    respondBlock(.success, data, nil)
                 } else if (code == 666) {
                     //身份变更
                 } else if (code == -1001) {
                     //请求超时
                 } else {
                     print("msg = \(msg)")
-                    failure(msg)
+                    respondBlock(.dataError, nil, msg)
                 }
             } catch {
-                failure(self.failureInfo)
+                respondBlock(.dataError, nil, self.failureInfo)
             }
         case let .failure(error):
             print("msg = \(error.errorDescription!)")
-            netError(self.netError)
+            respondBlock(.netError, nil, self.netError)
         }
     }
     
@@ -113,13 +114,12 @@ class NetworkManager {
     func endpointClosure<T: TargetType>(target: T) ->  Endpoint<T> {
         let url = target.baseURL.appendingPathComponent(target.path).absoluteString
         let endpoint = Endpoint<T>(url: url, sampleResponseClosure: { .networkResponse(200, target.sampleData) }, method: target.method, task: target.task, httpHeaderFields: target.headers)
-//            if let accessToken = "" {
-//                return endpoint.endpointByAddingHTTPHeaderFields(["access-token": accessToken])
-//            } else {
-//                return endpoint
-//            }"accessToken": "331_9999_0f320b2459cb4d59a579d91b21e28de1"
-        return endpoint.adding(newHTTPHeaderFields: ["accessToken": "331_9999_0f320b2459cb4d59a579d91b21e28de1"])
-        
+        if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
+            return endpoint.adding(newHTTPHeaderFields: ["accessToken": accessToken])
+        } else {
+            return endpoint
+        }
+//        return endpoint.adding(newHTTPHeaderFields: ["accessToken": "57_9999_93cbda2f42a14e44a7a144601d9ea85a"])
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  JPushManager.swift
+//  XBBJPushManager.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/9.
@@ -9,17 +9,17 @@
 import Foundation
 import UserNotifications
 
-class JPushManager: NSObject {
-    static let shard = JPushManager()
+class XBBJPushManager: NSObject {
+    static let shard = XBBJPushManager()
     
     override init() {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(xbb_networkDidReceiveMessage), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkDidReceiveMessage), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
     }
 }
 
-extension JPushManager {
-    @objc func xbb_networkDidReceiveMessage(notification: [String : Any]) {
+extension XBBJPushManager {
+    @objc func networkDidReceiveMessage(notification: [String : Any]) {
         
     }
     
@@ -35,7 +35,7 @@ extension JPushManager {
     }
     
     //统一处理接收通知的处理
-    private func xbb_didReceiveJPush(notification: [String : Int]) {
+    private func didReceiveJPush(notification: [String : Int]) {
         let type = notification["type"]
         switch UIApplication.shared.applicationState {
         case .active:
@@ -44,7 +44,7 @@ extension JPushManager {
             print("点击推送弹出的通知")
             if !((type == 665) &&
                 (type == 818))  {
-                xbb_handleMessage(notification: notification)
+                handleMessage(notification: notification)
             }
         case .background:
             print("后台收到消息")
@@ -52,12 +52,12 @@ extension JPushManager {
     }
     
     //消息类型
-    private func xbb_handleMessage(notification: [String : Int]) {
+    private func handleMessage(notification: [String : Int]) {
         
     }
 }
 
-extension JPushManager: JPUSHRegisterDelegate {
+extension XBBJPushManager: JPUSHRegisterDelegate {
     // iOS 10中收到推送消息
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
         let userInfo = notification.request.content.userInfo
@@ -76,7 +76,7 @@ extension JPushManager: JPUSHRegisterDelegate {
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
             JPUSHService.handleRemoteNotification(userInfo)
             print("收到远程通知:\(userInfo)")
-            xbb_didReceiveJPush(notification: userInfo as! [String : Int])
+            didReceiveJPush(notification: userInfo as! [String : Int])
         } else {
             print("前台收到本地通知:\(userInfo)")
         }

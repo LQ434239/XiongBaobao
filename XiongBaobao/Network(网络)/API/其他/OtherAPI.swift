@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import Moya
 
 let OtherProvider = MoyaProvider<OtherAPI>()
 
-fileprivate let fileName = ("\(Int32(Date().timeIntervalSince1970)).png")
+let fileName = ("\(kTimeStamp).png")
 
 enum OtherAPI {
     enum upload {
-        case addSeal(file: URL, name: String, parameters: [String: Any])
-        case addProxyBook(file: URL, name: String, parameters: [String: Any])
-        case sendContract(file: URL, name: String, parameters: [String: Any])
-        case signContract(file: URL, name: String, parameters: [String: Any])
-        case sign(file: URL, name: String, parameters: [String: Any])
+        case addSeal(image: UIImage, parameters: [String: Any])
+        case addProxyBook(image: UIImage, parameters: [String: Any])
+        case sendContract(file: URL, parameters: [String: Any])
+        case signContract(file: URL, parameters: [String: Any])
+        case sign(image: UIImage, parameters: [String: Any])
     }
 
     enum downLoad {
@@ -34,8 +33,8 @@ enum OtherAPI {
 extension OtherAPI: TargetType {
     var baseURL: URL {
         switch self {
-        case .downFile(downLoad: .image), .downFile(downLoad: .video):
-            return URL(string: "")!
+        case .downFile(.image(let url)):
+            return URL(string: url)!
         default:
             return URL(string: kBaseURL)!
         }
@@ -53,10 +52,8 @@ extension OtherAPI: TargetType {
             return kSignContract
         case .uploadFile(.sign):
             return kSign
-        case .downFile(.image(let url)):
-            return url
-        case .downFile(.video(let url)):
-            return url
+        case .downFile:
+            return ""
         }
     }
     
@@ -70,26 +67,20 @@ extension OtherAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .uploadFile(.addSeal(let file, let name, let parameters)):
-            let formData = MultipartFormData(provider: .file(file), name: name,
-                                              fileName: fileName, mimeType: "image/png")
+        case let .uploadFile(.addSeal(image, parameters)):
+            return .uploadCompositeMultipart([multipartFormData(image, "sealFile")], urlParameters: parameters)
+        case let .uploadFile(.addProxyBook(image, parameters)):
+            return .uploadCompositeMultipart([multipartFormData(image, "proxyFile")], urlParameters: parameters)
+        case let .uploadFile(.sendContract(file, parameters)):
+            let formData = MultipartFormData(provider: .file(file), name: "file",
+                                              fileName: fileName, mimeType: "mp4")
             return .uploadCompositeMultipart([formData], urlParameters: parameters)
-        case .uploadFile(.addProxyBook(let file, let name, let parameters)):
-            let formData = MultipartFormData(provider: .file(file), name: name,
-                                              fileName: fileName, mimeType: "image/png")
+        case let .uploadFile(.signContract(file, parameters)):
+            let formData = MultipartFormData(provider: .file(file), name: "file",
+                                              fileName: fileName, mimeType: "mp4")
             return .uploadCompositeMultipart([formData], urlParameters: parameters)
-        case .uploadFile(.sendContract(let file, let name, let parameters)):
-            let formData = MultipartFormData(provider: .file(file), name: name,
-                                              fileName: fileName, mimeType: "image/png")
-            return .uploadCompositeMultipart([formData], urlParameters: parameters)
-        case .uploadFile(.signContract(let file, let name, let parameters)):
-            let formData = MultipartFormData(provider: .file(file), name: name,
-                                              fileName: fileName, mimeType: "image/png")
-            return .uploadCompositeMultipart([formData], urlParameters: parameters)
-        case .uploadFile(.sign(let file, let name, let parameters)):
-            let formData = MultipartFormData(provider: .file(file), name: name,
-                                              fileName: fileName, mimeType: "image/png")
-            return .uploadCompositeMultipart([formData], urlParameters: parameters)
+        case let .uploadFile(.sign(image, parameters)):
+            return .uploadCompositeMultipart([multipartFormData(image, "file")], urlParameters: parameters)
         case .downFile(.image):
             return .downloadDestination(DefaultDownloadDestination)
         case .downFile(.video):
@@ -98,21 +89,26 @@ extension OtherAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        //["Content-Type": "application/json", "charset":"utf-8"]
-        //return ["Content-Type": "application/json"]
         return nil
     }
 }
 
+//表示上传的数据
+func multipartFormData(_ image: UIImage, _ name: String) -> MultipartFormData{
+    let formData = MultipartFormData(provider: .data(image.compress()), name: name,
+                                     fileName: fileName, mimeType: "image/png")
+    return formData
+}
+
 //定义下载的DownloadDestination（不改变文件名，同名文件不会覆盖）
 private let DefaultDownloadDestination: DownloadDestination = { temporaryURL, response in
-    return (DefaultDownloadDir.appendingPathComponent(response.suggestedFilename!), [])
+//    response.suggestedFilename!
+    return (DefaultDownloadDir.appendingPathComponent(fileName), [.removePreviousFile])
 }
 
 //默认下载保存地址
 let DefaultDownloadDir: URL = {
-    //documentDirectory 
-    let directoryURLs = FileManager.default.urls(for: .cachesDirectory,
-                                                 in: .userDomainMask)
+    let directoryURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     return directoryURLs.first ?? URL(fileURLWithPath: NSTemporaryDirectory())
 }()
+

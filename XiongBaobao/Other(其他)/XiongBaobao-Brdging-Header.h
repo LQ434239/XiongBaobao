@@ -9,9 +9,14 @@
 #ifndef XiongBaobao_Brdging_Header_h
 #define XiongBaobao_Brdging_Header_h
 
-//#import <Toast/UIView+Toast.h>
+#import <JPush/JPUSHService.h>
 #import <MJRefresh/MJRefresh.h>
-#import <MBProgressHUD/MBProgressHUD.h>
+#import <PYSearch/PYSearch.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <Toast/UIView+Toast.h>
+#import <TZImagePickerController/TZImagePickerController.h>
+#import <WechatOpenSDK/WXApi.h>
+#import <WMPageController/WMPageController.h>
 #import <ZFPlayer/ZFPlayer.h>
 
 #endif /* XiongBaobao_Brdging_Header_h */    

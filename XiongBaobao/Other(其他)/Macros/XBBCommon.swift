@@ -35,6 +35,9 @@ let keyWindow = UIApplication.shared.keyWindow
 let kAppdelegate = UIApplication.shared.delegate as! AppDelegate
 let kDelegateWindow = kAppdelegate.window
 
+//时间戳
+let kTimeStamp = String(Int(Date().timeIntervalSince1970))
+
 let kUUID           = UUID().uuidString
 let kVersion        = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Moya
 
 enum UserAPI {
     case send //发送短信接口
@@ -20,8 +19,8 @@ enum UserAPI {
     case setUserInfo  //设置用户信息
     case getHeadImg  //获取用户头像
     case qiNiuUpToken  //获取七牛token
-    case payNotice  //苹果支付
-    case unifiedOrder  //创建预支付信息
+    case payNotice(receiptData: String, outTradeNo: String)  //苹果支付
+    case unifiedOrder(amount: CGFloat)  //创建预支付信息
     case versionSelect  //版本查询
     case checkPassword  //检查密码
     case bindJPush  //绑定极光
@@ -91,10 +90,21 @@ extension UserAPI: TargetType {
         switch self {
         case .versionSelect:
             return .requestParameters(parameters: ["category":"1"], encoding: URLEncoding.default)
+        case .unifiedOrder(let amount):
+            return .requestParameters(parameters: ["amount":amount], encoding: URLEncoding.default)
+        case .payNotice(let receiptData, let outTradeNo):
+            let params = ["receiptData":receiptData, "outTradeNo":outTradeNo]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .login: //13333333333
+            let params = ["userName":"13333333333",
+                "password":"",
+                "verificationCode":"888888",
+                "deviceId":kUUID,
+                "deviceType":"ios"]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
-        
     }
     
     var headers: [String : String]? {

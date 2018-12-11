@@ -67,7 +67,7 @@ class XBBShootViewController: UIViewController {
     
     //视频保存地址
     private lazy var localMovieUrl: URL = {
-        let url = URL(fileURLWithPath: NSTemporaryDirectory() + "src.mp4")
+        let url = URL(fileURLWithPath: NSTemporaryDirectory() + "tem.mp4")
         return url
     }()
     
@@ -82,14 +82,14 @@ class XBBShootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !NSObject.judgeSystemAuthority(type: .video) {
+        if NSObject.judgeSystemAuthority(type: .video) {
+            if !NSObject.judgeSystemAuthority(type: .audio) {
+                return
+            }
+        } else {
             return
         }
         
-        if !NSObject.judgeSystemAuthority(type: .audio) {
-            return
-        }
-
         self.view.addSubview(self.userCamera)
         self.view.addSubview(self.toolBar)
         

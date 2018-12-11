@@ -16,6 +16,16 @@ enum ButtonEdgeInsetsStyle {
 }
 
 extension UIButton {
+    
+    convenience init(title: String, titleColor: UIColor, bgColor: UIColor) {
+        self.init(type: .custom)
+        titleLabel?.font = FontSize(18)
+        setTitle(title, for: .normal)
+        setTitleColor(titleColor, for: .normal)
+        setBackgroundImage(UIImage.image(bgColor), for: .normal)
+        setBackgroundImage(UIImage.image(UIColor(hex: "#d8d8d8")), for: .disabled)
+    }
+    
     func layoutButtonWithEdgeInsetsStyle(style: ButtonEdgeInsetsStyle, space: CGFloat) {
         let imageWith = (self.imageView?.width)!
         let imageHeight = (self.imageView?.height)!
