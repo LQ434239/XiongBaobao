@@ -13,7 +13,7 @@ class HomeViewModel: NSObject {
 }
 
 extension HomeViewModel {
-    func requestData() {
-
+    func loadDataList() {
+        
     }
 }

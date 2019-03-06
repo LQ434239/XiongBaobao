@@ -15,7 +15,7 @@ class XBBGuideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+        xbb_setupView()
     }
     
     private lazy var pageControl: UIPageControl = {
@@ -46,7 +46,7 @@ class XBBGuideViewController: UIViewController {
         nowButton.setTitle("立即体验", for: .normal)
         nowButton.backgroundColor = UIColor(hex: "1b5495")
         nowButton.corner(radius: 15)
-        nowButton.addTarget(self, action: #selector(clickNowButton), for: .touchUpInside)
+        nowButton.addTarget(self, action: #selector(xbb_clickNowButton), for: .touchUpInside)
         return nowButton
     }()
 }
@@ -64,7 +64,7 @@ extension XBBGuideViewController {
         return true
     }
     
-    private func setupView() {
+    private func xbb_setupView() {
         self.view.backgroundColor = .white
         
         self.view.addSubview(self.scrollView)
@@ -98,7 +98,7 @@ extension XBBGuideViewController {
         }
     }
     
-    @objc private func clickNowButton() {
+    @objc private func xbb_clickNowButton() {
         UIApplication.shared.keyWindow?.rootViewController = XBBLoginViewController()
     }
 }

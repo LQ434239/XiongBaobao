@@ -29,6 +29,7 @@ target 'XiongBaobao' do
     pod 'Moya-SwiftyJSONMapper'
 #    pod 'Moya/RxSwift'
     pod 'MJRefresh'
+    pod 'MLeaksFinder'
 #    pod 'MBProgressHUD'
 #    pod 'NicooPlayer'
     pod 'ObjectMapper'

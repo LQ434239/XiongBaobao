@@ -14,10 +14,7 @@ class XBBPlayerViewController: UIViewController {
     
     var player = ZFPlayerController()
     
-    private lazy var controlView: ZFPlayerControlView = {
-        let view = ZFPlayerControlView()
-        return view
-    }()
+    let controlView = ZFPlayerControlView()
     
     override func viewDidLoad() { 
         super.viewDidLoad()

@@ -95,8 +95,8 @@ extension UserAPI: TargetType {
         case .payNotice(let receiptData, let outTradeNo):
             let params = ["receiptData":receiptData, "outTradeNo":outTradeNo]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        case .login: //13333333333
-            let params = ["userName":"13333333333",
+        case .login: //13333333333  18883282840
+            let params = ["userName":"13452830462",
                 "password":"",
                 "verificationCode":"888888",
                 "deviceId":kUUID,

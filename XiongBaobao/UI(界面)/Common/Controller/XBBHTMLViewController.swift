@@ -22,24 +22,24 @@ class XBBHTMLViewController: XBBBaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        setupView()
+        xbb_loadData()
+        xbb_setupView()
     }
 }
 
 extension XBBHTMLViewController {
     
-    func loadData() {
+    func xbb_loadData() {
         if !self.requesURL.isEmpty {
-            self.webView.loadRequest(url: self.requesURL)
+            self.webView.xbb_loadRequest(url: self.requesURL)
         }
         
         if !self.html.isEmpty {
-            self.webView.loadHTML(html: self.html)
+            self.webView.xbb_loadHTML(html: self.html)
         }
     }
     
-    func setupView() {
+    func xbb_setupView() {
         self.view.addSubview(self.webView)
         self.webView.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsets(top: kNavHeight, left: 0, bottom: 0, right: 0))

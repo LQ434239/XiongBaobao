@@ -15,7 +15,6 @@ class XBBBaseViewController: UIViewController {
         button.sizeToFit()
         button.titleLabel?.font = FontSize(16)
         button.setTitleColor(kTextColor6, for: .normal)
-        button.addTarget(self, action: #selector(clickLeftItem(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -24,10 +23,8 @@ class XBBBaseViewController: UIViewController {
         button.sizeToFit()
         button.titleLabel?.font = FontSize(16)
         button.setTitleColor(kTextColor6, for: .normal)
-        button.addTarget(self, action: #selector(clickRightItem(_:)), for: .touchUpInside)
         return button
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +56,7 @@ extension XBBBaseViewController {
         self.leftButton.setImage(image, for: .normal)
         self.leftButton.setTitleColor(titleColor, for: .normal)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: self.leftButton)
+        self.leftButton.addTarget(self, action: #selector(clickLeftItem(_:)), for: .touchUpInside)
     }
     
     func setRightItem(title: String, titleColor: UIColor) {
@@ -73,6 +71,7 @@ extension XBBBaseViewController {
         self.rightButton.setTitle(title, for: .normal)
         self.rightButton.setImage(image, for: .normal)
         self.rightButton.setTitleColor(titleColor, for: .normal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: self.rightButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: self.rightButton)
+        self.rightButton.addTarget(self, action: #selector(clickRightItem(_:)), for: .touchUpInside)
     }
 }

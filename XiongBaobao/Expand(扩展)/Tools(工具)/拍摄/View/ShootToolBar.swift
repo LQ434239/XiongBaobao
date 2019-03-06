@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ShootToolBarDelegate {
+protocol ShootToolBarDelegate: NSObjectProtocol {
     func shootToolBarAction(index: NSInteger)
     func shootStart(button: ShootToolBar, progress: CGFloat)
     func shootEnd(button: ShootToolBar)
@@ -16,7 +16,7 @@ protocol ShootToolBarDelegate {
 
 class ShootToolBar: UIView {
     
-    var delegate: ShootToolBarDelegate?
+    weak var delegate: ShootToolBarDelegate?
     
     private lazy var shootButton: ShootButton = {
         let button = ShootButton()
@@ -60,7 +60,7 @@ class ShootToolBar: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,7 +69,7 @@ class ShootToolBar: UIView {
 }
 
 extension ShootToolBar {
-    func setupView() {
+    func xbb_setupView() {
         
         addSubview(self.closeButton)
         addSubview(self.changeButton)

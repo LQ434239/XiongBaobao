@@ -13,7 +13,6 @@ extension URL {
         let path = NSTemporaryDirectory().appending(kTimeStamp + ".mp4")
         //如果文件存在就删除
         try? FileManager.default.removeItem(atPath: path)
-        
         let asset = AVAsset(url: self)
         let session = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetMediumQuality)
         //优化网络

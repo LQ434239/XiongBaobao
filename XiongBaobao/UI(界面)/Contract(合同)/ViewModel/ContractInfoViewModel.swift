@@ -27,7 +27,7 @@ class ContractInfoViewModel: NSObject {
 extension ContractInfoViewModel {
     func loadContract(model: ContractModel, success: @escaping (_ model: ContractModel) -> Void) {
         
-        let parameters = ["transmissionId": model.data_id, "state": model.status!]
+        let parameters = ["transmissionId": model.dataId, "state": model.status!]
         NetworkManager.shard.requestJSONDataWithTarget(target: ContractAPI.contractById(parameters: parameters)) { (status, result, message) in
             if status == .success {
                 guard let jsonDic = result!.dictionaryObject else { return }
@@ -115,7 +115,7 @@ extension ContractInfoViewModel {
     
     //撤销合同
     func repealContract(model: ContractModel) {
-        NetworkManager.shard.requestJSONDataWithTarget(target: ContractAPI.recallById(dataId: model.data_id)) { (status, result, message) in
+        NetworkManager.shard.requestJSONDataWithTarget(target: ContractAPI.recallById(dataId: model.dataId)) { (status, result, message) in
             if status == .success {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: notification_refreshContract), object: nil, userInfo: ["index0": 5,"index1":7])
                 
@@ -130,7 +130,7 @@ extension ContractInfoViewModel {
     
     //保全
     func preserveContract(model: ContractModel, isPreserve: Int) {
-        let parameters = ["transmissionId": model.data_id, "isPreserve": isPreserve]
+        let parameters = ["transmissionId": model.dataId, "isPreserve": isPreserve]
         NetworkManager.shard.requestJSONDataWithTarget(target: ContractAPI.preserveContract(parameters: parameters)) { (status, result, message) in
             if status == .success {
                 guard let jsonDic = result!.dictionaryObject else { return }
@@ -176,6 +176,7 @@ extension ContractInfoViewModel {
     
     // MARK: Photos框架保存文件
     func saveFile(path: URL, isVideo: Bool) {
+        print(path)
         PHPhotoLibrary.shared().performChanges({
             if isVideo {
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: path)

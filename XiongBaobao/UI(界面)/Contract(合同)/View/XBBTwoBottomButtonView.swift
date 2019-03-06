@@ -14,31 +14,31 @@ enum ButtonViewType {
     case finish
 }
 
-protocol XBBTwoBottomButtonViewDelegate {
-    func clickLeftButton(button: UIButton)
-    func clickRightButton(button: UIButton)
+protocol XBBTwoBottomButtonViewDelegate: NSObjectProtocol {
+    func xbb_clickLeftButton(button: UIButton)
+    func xbb_clickRightButton(button: UIButton)
 }
 
 class XBBTwoBottomButtonView: UIView {
     
-    var delegate: XBBTwoBottomButtonViewDelegate?
+    weak var delegate: XBBTwoBottomButtonViewDelegate?
     
     lazy var leftButton: UIButton = {
         let button = UIButton(title: "拒绝保全", titleColor: kTextColor6, bgColor: UIColor.white)
-        button.addTarget(self, action: #selector(clickLeftButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickLeftButton(_:)), for: .touchUpInside)
         
         return button
     }()
     
     lazy var rightButton: UIButton = {
         let button = UIButton(title: "立即保全", titleColor: UIColor.white, bgColor: kThemeColor)
-        button.addTarget(self, action: #selector(clickRightButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickRightButton(_:)), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,7 +47,7 @@ class XBBTwoBottomButtonView: UIView {
 }
 
 extension XBBTwoBottomButtonView {
-    func setupView() {
+    func xbb_setupView() {
         self.isHidden = true
         self.backgroundColor = UIColor.white
         
@@ -64,12 +64,12 @@ extension XBBTwoBottomButtonView {
         }
     }
     
-    @objc func clickLeftButton(_ button: UIButton) {
-        self.delegate?.clickLeftButton(button: button)
+    @objc func xbb_clickLeftButton(_ button: UIButton) {
+        self.delegate?.xbb_clickLeftButton(button: button)
     }
     
-    @objc func clickRightButton(_ button: UIButton) {
-        self.delegate?.clickRightButton(button: button)
+    @objc func xbb_clickRightButton(_ button: UIButton) {
+        self.delegate?.xbb_clickRightButton(button: button)
     }
     
     func setButtonTitle(type: ButtonViewType) {

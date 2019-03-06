@@ -12,7 +12,7 @@ enum PreserveAPI {
     case statistics //保全统计
     case applyCertificate //申请出证
     case certificateList // 已出证证书列表
-    case basicList  //保全列表基础
+    case basicList(parameters: [String: Any])  //保全列表基础
     case rename  //保全图片和视频名称修改
     case uploadImg  //保全图片和视频
 }
@@ -55,7 +55,12 @@ extension PreserveAPI: TargetType {
     }
     
     var task: Task {
-        return Task.requestPlain
+        switch self {
+        case .basicList(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        default:
+            return Task.requestPlain
+        }
     }
     
     var headers: [String : String]? {

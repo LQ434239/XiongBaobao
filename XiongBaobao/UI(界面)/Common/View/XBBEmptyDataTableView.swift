@@ -48,7 +48,7 @@ class XBBEmptyDataTableView: UITableView {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,7 +57,7 @@ class XBBEmptyDataTableView: UITableView {
 }
 
 extension XBBEmptyDataTableView {
-    func setupView() {
+    func xbb_setupView() {
         self.backgroundColor = kBackgroundColor
         self.emptyDataSetSource = self
         self.emptyDataSetDelegate = self
@@ -65,9 +65,10 @@ extension XBBEmptyDataTableView {
         self.showsHorizontalScrollIndicator = false
         self.separatorStyle = .none
         if self.style == .grouped {
-            self.tableHeaderView = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+            self.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         }
         self.tableFooterView = UIView()
+        self.contentInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -105,7 +106,7 @@ extension XBBEmptyDataTableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate 
     }
     
     func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-        return true
+        return self.isLoading ? false: true
     }
 }
 

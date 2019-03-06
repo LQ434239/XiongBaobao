@@ -58,7 +58,7 @@ extension ContractAPI: TargetType {
         return "".data(using:.utf8)!
     }
     
-    var task: Task {
+    var task: Task { 
         switch self {
         case .contractList(_, let parameters):
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)

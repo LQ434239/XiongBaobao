@@ -61,8 +61,6 @@ let kTabBarHeight: CGFloat    = 49 + kBottomSafeSpace
 //分页控制器
 let kPageMenuHeight: CGFloat = 45.0
 
-var isProxyC: Bool = false //是否是代理合同
-
 // MARK: 适配屏幕（iphone 6）
 // 宽度比
 let kWidthRatio  = kScreenWidth / 375.0

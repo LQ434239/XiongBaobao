@@ -16,7 +16,7 @@ class XBBContractInfoTableViewCell: UITableViewCell {
     }()
     
     private lazy var videoImgV: UIImageView = {
-        let imgV = UIImageView(image: UIImage.image(kTextColor9))
+        let imgV = UIImageView()
         imgV.corner(radius: 2)
         return imgV
     }()
@@ -47,21 +47,21 @@ class XBBContractInfoTableViewCell: UITableViewCell {
             self.bookImgV.isHidden = model?.type != 3
             
             if model?.type == 2 {
-                self.videoImgV.kf.setImage(with: URL(string: (model?.thb)!))
+                self.videoImgV.kf.setImage(with: URL(string: (model?.thb)!), placeholder: UIImage.image(kTextColor9))
             }
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var frame:CGRect {
+    override var frame: CGRect {
         didSet {
             var newFrame = frame
             newFrame.origin.x += 10
@@ -74,7 +74,7 @@ class XBBContractInfoTableViewCell: UITableViewCell {
 }
 
 extension XBBContractInfoTableViewCell {
-    func setupView() {
+    func xbb_setupView() {
         self.selectionStyle = .none
         
         self.contentView.addSubview(self.contractImgV)

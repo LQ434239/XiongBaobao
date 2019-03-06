@@ -20,27 +20,26 @@ class XBBHomeDataTableViewCell: UITableViewCell {
 
     private lazy var totalLabel: UILabel = {
         var label = createLabel()
-        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n保全总数", rangFont: FontSize(10), rangColor: kTextColor9)
+        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n保全总数", rangFont: FontSize(12), rangColor: kTextColor9)
         return label
     }()
     
     private lazy var localLabel: UILabel = {
         var label = createLabel()
-        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n本地保全", rangFont: FontSize(10), rangColor: kTextColor9)
+        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n本地保全", rangFont: FontSize(12), rangColor: kTextColor9)
         return label
     }()
     
     private lazy var contractLabel: UILabel = {
         var label = createLabel()
-        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n合同保全", rangFont: FontSize(10), rangColor: kTextColor9)
-        
+        label.attributedText = String.stringCustom(prefix: "0", suffix: "\n合同保全", rangFont: FontSize(12), rangColor: kTextColor9)
         return label
     }()
     
     private func createLabel() -> UILabel {
         let label = UILabel()
         label.textColor = kTextColor3
-        label.font = FontSize(30)
+        label.font = FontSize(40)
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
@@ -48,7 +47,7 @@ class XBBHomeDataTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,11 +56,10 @@ class XBBHomeDataTableViewCell: UITableViewCell {
 }
 
 extension XBBHomeDataTableViewCell {
-    func setupView() {
+    func xbb_setupView() {
         self.selectionStyle = .none
         
         let width = (kScreenWidth - 24) / 3
-        
         self.contentView.addSubview(self.totalLabel)
         self.totalLabel.snp.makeConstraints { (make) in
             make.left.equalTo(12)

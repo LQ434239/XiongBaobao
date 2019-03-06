@@ -9,14 +9,14 @@
 import UIKit
 import WebKit
 
-@objc protocol XBBWKWebViewDelegate {
+@objc protocol XBBWKWebViewDelegate: NSObjectProtocol {
     @objc optional func didReceiveScript(message: WKScriptMessage)
     @objc optional func didFinishNavigation(webView: WKWebView)
 }
 
 class XBBWKWebView: UIView {
     
-    var delegate: XBBWKWebViewDelegate?
+    weak var delegate: XBBWKWebViewDelegate?
     
     private lazy var wkWebView: WKWebView = {
         let wkWebConfig = WKWebViewConfiguration()
@@ -25,8 +25,12 @@ class XBBWKWebView: UIView {
         wkWebConfig.allowsInlineMediaPlayback = true
         // 允许可以与网页交互，选择视图
         wkWebConfig.preferences.javaScriptEnabled = true
-        wkWebConfig.preferences.javaScriptCanOpenWindowsAutomatically = true
-        let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);user-scalable=no"
+        // 不通过用户交互，是否可以打开窗口
+        wkWebConfig.preferences.javaScriptCanOpenWindowsAutomatically = false
+        let messageDelegate = WeakScriptMessageDelegate()
+        messageDelegate.delegate = self
+        wkUController.add(messageDelegate, name: "openShoot")
+        let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);user-scalable=no;"
         let wkUserScript = WKUserScript(source: jScript, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
         wkUController.addUserScript(wkUserScript)
         let wkWebView = WKWebView(frame: CGRect.zero, configuration: wkWebConfig)
@@ -52,7 +56,7 @@ class XBBWKWebView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,26 +71,26 @@ class XBBWKWebView: UIView {
 
 extension XBBWKWebView {
     
-    func setupView() {
+    func xbb_setupView() {
         addSubview(self.wkWebView)
         self.wkWebView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
         
         addSubview(self.progressView)
-        self.progressView.snp.makeConstraints { (make) in
+        self.progressView.snp.makeConstraints { (make) in 
             make.left.top.right.equalTo(0)
             make.height.equalTo(2)
         }
     }
     
-    func loadRequest(url: String) {
+    func xbb_loadRequest(url: String) {
         let url = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let request = URLRequest(url: URL(string: url!)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
         self.wkWebView.load(request)
     }
     
-    func loadHTML(html: String) {
+    func xbb_loadHTML(html: String) {
         self.wkWebView.loadHTMLString(html, baseURL: nil)
     }
     
@@ -155,8 +159,9 @@ extension XBBWKWebView: WKNavigationDelegate {
     }
 }
 
-extension XBBWKWebView: WKScriptMessageHandler {
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+extension XBBWKWebView: ScriptDelegate {
+    
+    func xbb_userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         self.delegate?.didReceiveScript!(message: message)
     }
 }
@@ -194,7 +199,7 @@ extension XBBWKWebView: WKUIDelegate {
         NSObject.currentController().present(alter, animated: true, completion: nil)
     }
     
-    //在网页上点击某些链接却不响应
+    //在网页上点击某些链接不响应
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if !(navigationAction.targetFrame?.isMainFrame)! {
             webView.load(navigationAction.request)

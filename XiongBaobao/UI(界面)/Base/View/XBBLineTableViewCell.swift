@@ -10,10 +10,15 @@ import UIKit
 
 class XBBLineTableViewCell: UITableViewCell {
     
+     lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = kLineColor
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.accessoryType =  .none
         self.contentView.backgroundColor = UIColor.white
         
         self.contentView.addSubview(self.lineView)
@@ -28,10 +33,4 @@ class XBBLineTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = kLineColor
-        return view
-    }()
 }

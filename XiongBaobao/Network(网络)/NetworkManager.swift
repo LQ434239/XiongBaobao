@@ -34,7 +34,7 @@ class NetworkManager {
     func requestJSONDataWithTarget<T: TargetType>(target: T, respondBlock: @escaping RespondBlock) {
         let requestProvider = MoyaProvider<T>(endpointClosure: endpointClosure, requestClosure:requestTimeoutClosure(target: target))
         let _ = requestProvider.request(target) { (result) in
-            self.dataTask(result, respondBlock: respondBlock) 
+            self.dataTask(result, respondBlock: respondBlock)
         }
     }
     
@@ -111,7 +111,7 @@ class NetworkManager {
         return requestTimeoutClosure
     }
     
-    func endpointClosure<T: TargetType>(target: T) ->  Endpoint<T> {
+    private func endpointClosure<T: TargetType>(target: T) -> Endpoint<T> {
         let url = target.baseURL.appendingPathComponent(target.path).absoluteString
         let endpoint = Endpoint<T>(url: url, sampleResponseClosure: { .networkResponse(200, target.sampleData) }, method: target.method, task: target.task, httpHeaderFields: target.headers)
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
@@ -119,7 +119,6 @@ class NetworkManager {
         } else {
             return endpoint
         }
-//        return endpoint.adding(newHTTPHeaderFields: ["accessToken": "57_9999_93cbda2f42a14e44a7a144601d9ea85a"])
     }
 }
 

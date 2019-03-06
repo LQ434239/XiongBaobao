@@ -9,9 +9,9 @@
 import Foundation
 
 enum MineAPI {
-    case messageList //消息列表
-    case delMessage //删除消息
-    case readMsg //阅读消息
+    case messageList(parameters: [String: Int]) //消息列表
+    case delMessage(parameters: [String: Int]) //删除消息
+    case readMsg(msgId: Int) //阅读消息
     case generateQRcode  //生成个人二维码
     case myLowerIncomeList  //我推荐的人的收入汇总
     case withdrawInfo  //提现信息
@@ -22,8 +22,8 @@ enum MineAPI {
     case editSeal  //编辑印章
     case proxyBookList  //授权书列表
     case addProxyBook  //添加授权书
-    case course  //教程
-    case courseDetail  //教程详情
+    case course(parameters: [String: Int])  //教程
+    case courseDetail(id: Int)  //教程详情
 }
 
 extension MineAPI: TargetType {
@@ -82,7 +82,20 @@ extension MineAPI: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .messageList(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .delMessage(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .readMsg(let msgId):
+            return .requestParameters(parameters: ["msgId": msgId], encoding: URLEncoding.default)
+        case .course(let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .courseDetail(let id):
+            return .requestParameters(parameters: ["id": id], encoding: URLEncoding.default)
+        default:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {

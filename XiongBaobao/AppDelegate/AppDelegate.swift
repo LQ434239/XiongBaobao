@@ -37,10 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
-        XBBConfigurationManager.setLaunchOption()
-        XBBStartAPIManager.setLaunchOption()
-        
-        UIButton.methodExchange()
+        ConfigurationManager.xbb_setLaunchOption()
+        StartAPIManager.xbb_setLaunchOption()
+
+        UIButton.initializeMethod()
         
         return true
     }

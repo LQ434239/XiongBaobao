@@ -27,12 +27,12 @@ class XBBTabBar: UITabBar {
         for tabBarButton in self.subviews {
             if tabBarButton.isKind(of: NSClassFromString("UITabBarButton")!) {
               let button = tabBarButton as! UIControl
-                button.addTarget(self, action: #selector(self.tabBarButtonClick(tabBarButton:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(xbb_tabBarButtonClick(tabBarButton:)), for: .touchUpInside)
             }
         }
     }
     
-    @objc func tabBarButtonClick(tabBarButton: UIControl) {
+    @objc func xbb_tabBarButtonClick(tabBarButton: UIControl) {
         for imageView in tabBarButton.subviews {
             if imageView.isKind(of: NSClassFromString("UITabBarSwappableImageView")!) {
                 let animation = CAKeyframeAnimation.init(keyPath: "transform.scale")

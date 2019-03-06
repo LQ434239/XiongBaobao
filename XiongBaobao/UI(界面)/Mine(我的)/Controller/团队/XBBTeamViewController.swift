@@ -12,7 +12,13 @@ class XBBTeamViewController: XBBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        xbb_setupNav()
     }
     
+}
+
+extension XBBTeamViewController {
+    func xbb_setupNav() {
+        self.title = "我的团队"
+    }
 }

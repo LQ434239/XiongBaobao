@@ -8,29 +8,48 @@
 
 import UIKit
 
-protocol XBBSignContractToolViewDelegate {
-    func clickSign(button: UIButton)
-    func clickBook(button: UIButton)
-    func clickSeal(button: UIButton)
-    func clickNext(button: UIButton)
+protocol XBBSignContractToolViewDelegate: NSObjectProtocol {
+    func xbb_clickSign(button: UIButton)
+    func xbb_clickBook(button: UIButton)
+    func xbb_clickSeal(button: UIButton)
+    func xbb_clickNext(button: UIButton)
 }
 
 class XBBSignContractToolView: UIView {
     
-    var delegate: XBBSignContractToolViewDelegate?
+    var isProxyC: Bool = false  { //是否是代理合同
+        didSet {
+            if !isProxyC {
+                self.sealButton.isHidden = true
+                
+                let width = kScreenWidth / 3
+                self.nextView.snp.updateConstraints { (make) in
+                    make.width.equalTo(width)
+                }
+                self.signButton.snp.updateConstraints { (make) in
+                    make.width.equalTo(width)
+                }
+                self.bookButton.snp.updateConstraints { (make) in
+                    make.width.left.equalTo(width)
+                }
+            }
+        }
+    }
+    
+    weak var delegate: XBBSignContractToolViewDelegate?
     
     private lazy var signButton: UIButton = {
-        let button = createButton(title: "手写签名", image: UIImage(named: "home_tab_nor")!, tag: 100)
+        let button = xbb_createButton(title: "手写签名", image: UIImage(named: "home_tab_nor")!, tag: 100)
         return button
     }()
     
     private lazy var bookButton: UIButton = {
-        let button = createButton(title: "授权书", image: UIImage(named: "home_tab_nor")!, tag: 200)
+        let button = xbb_createButton(title: "授权书", image: UIImage(named: "home_tab_nor")!, tag: 200)
         return button
     }()
     
     private lazy var sealButton: UIButton = {
-        let button = createButton(title: "盖章", image: UIImage(named: "home_tab_nor")!, tag: 300)
+        let button = xbb_createButton(title: "盖章", image: UIImage(named: "home_tab_nor")!, tag: 300)
         return button
     }()
     
@@ -41,28 +60,22 @@ class XBBSignContractToolView: UIView {
         button.titleLabel?.font = FontSize(14)
         button.setTitle("下一步", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(clickButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickButton(button:)), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var nextView: UIView = {
+        let view = UIView()
+        return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func createButton(title: String, image: UIImage, tag: Int) -> UIButton {
-        let button = UIButton(type: .custom)
-        button.tag = tag
-        button.titleLabel?.font = FontSize(10)
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(kTextColor3, for: .normal)
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(clickButton(button:)), for: .touchUpInside)
-        return button
     }
     
     override func layoutSubviews() {
@@ -74,23 +87,31 @@ class XBBSignContractToolView: UIView {
 }
 
 extension XBBSignContractToolView {
-    func setupView() {
+    
+    private func xbb_createButton(title: String, image: UIImage, tag: Int) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.tag = tag
+        button.titleLabel?.font = FontSize(10)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(kTextColor3, for: .normal)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(xbb_clickButton(button:)), for: .touchUpInside)
+        return button
+    }
+    
+    func xbb_setupView() {
         
         self.backgroundColor = kBackgroundColor
         
-        var width = kScreenWidth / 3
-        if isProxyC {
-            width = kScreenWidth / 4
-        }
+        let width = kScreenWidth / 4
         
-        let view = UIView()
-        addSubview(view)
-        view.snp.makeConstraints { (make) in
+        addSubview(self.nextView)
+        self.nextView.snp.makeConstraints { (make) in
             make.top.right.bottom.equalTo(0)
             make.width.equalTo(width)
         }
         
-        view.addSubview(self.nextButton)
+        self.nextView.addSubview(self.nextButton)
         self.nextButton.snp.makeConstraints { (make) in
             make.top.equalTo(10)
             make.right.bottom.equalTo(-10)
@@ -110,26 +131,21 @@ extension XBBSignContractToolView {
             make.width.left.equalTo(width)
         }
         
-        if isProxyC {
-            addSubview(self.sealButton)
-            self.sealButton.snp.makeConstraints { (make) in
-                make.top.bottom.equalTo(0)
-                make.width.equalTo(width)
-                make.left.equalTo(width*2)
-            }
+        addSubview(self.sealButton)
+        self.sealButton.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(0)
+            make.width.equalTo(width)
+            make.left.equalTo(width * 2)
         }
     }
 }
 
 extension XBBSignContractToolView {
-    @objc func clickButton(button: UIButton) {
-        if button.tag == 100 { self.delegate?.clickSign(button: button) }
-
-        if button.tag == 200 { self.delegate?.clickBook(button: button) }
-        
-        if button.tag == 300 { self.delegate?.clickSeal(button: button) }
-        
-        if button.tag == 400 { self.delegate?.clickNext(button: button) }
+    @objc func xbb_clickButton(button: UIButton) {
+        if button.tag == 100 { self.delegate?.xbb_clickSign(button: button) }
+        if button.tag == 200 { self.delegate?.xbb_clickBook(button: button) }
+        if button.tag == 300 { self.delegate?.xbb_clickSeal(button: button) }
+        if button.tag == 400 { self.delegate?.xbb_clickNext(button: button) }
     }
 }
 

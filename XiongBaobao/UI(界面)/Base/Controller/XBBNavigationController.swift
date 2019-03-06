@@ -15,6 +15,8 @@ class XBBNavigationController: UINavigationController {
         
         WRNavigationBar.defaultShadowImageHidden = true
         WRNavigationBar.defaultNavBarTintColor = kTextColor3
+        
+        self.navigationBar.shadow(radius: 1, opacity: 0.2)
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

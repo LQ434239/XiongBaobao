@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - DZNEmptyDataSet (1.8.1)
+  - FBRetainCycleDetector (0.1.4)
   - HappyDNS (0.3.14)
   - IQKeyboardManagerSwift (6.2.0)
   - JCore (1.2.2)
@@ -8,6 +9,8 @@ PODS:
     - JCore (~> 1.2.0)
   - Kingfisher (4.8.1)
   - MJRefresh (3.1.15.7)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - Moya (10.0.2):
     - Moya/Core (= 10.0.2)
   - Moya-SwiftyJSONMapper (3.0.0):
@@ -49,6 +52,7 @@ DEPENDENCIES:
   - JPush
   - Kingfisher
   - MJRefresh
+  - MLeaksFinder
   - Moya
   - Moya-SwiftyJSONMapper
   - ObjectMapper
@@ -70,12 +74,14 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - DZNEmptyDataSet
+    - FBRetainCycleDetector
     - HappyDNS
     - IQKeyboardManagerSwift
     - JCore
     - JPush
     - Kingfisher
     - MJRefresh
+    - MLeaksFinder
     - Moya
     - Moya-SwiftyJSONMapper
     - ObjectMapper
@@ -97,12 +103,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JCore: f14c0549968a63c22e246a4875aa9d428446f373
   JPush: 5921e25ad13e0386351079217b009f2039084eac
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
   Moya-SwiftyJSONMapper: ceecd41a96b31ae4d17cd80a271a544563fe2c57
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
@@ -121,6 +129,6 @@ SPEC CHECKSUMS:
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   ZFPlayer: 9cd0d5d4bb24948fb5e79fa5ce4db46d89d6b0bc
 
-PODFILE CHECKSUM: 9dbb0097d7760063f7e0179791bf89a38824be46
+PODFILE CHECKSUM: 2e6f03321fc3fdfff7276b79762d181464f49dfb
 
 COCOAPODS: 1.5.3

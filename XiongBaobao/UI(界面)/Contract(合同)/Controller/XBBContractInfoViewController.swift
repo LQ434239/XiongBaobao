@@ -9,6 +9,7 @@
 import UIKit
 
 class XBBContractInfoViewController: XBBBaseViewController {
+    var isProxyC: Bool = false //是否是代理合同
     
     var contractModel: ContractModel?
     
@@ -36,20 +37,19 @@ class XBBContractInfoViewController: XBBBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNav()
-        setupView()
-        loadContractData()
+        xbb_setupNav()
+        xbb_setupView()
+        xbb_loadContract()
     }
 }
 
 extension XBBContractInfoViewController {
     
-    func setupNav() {
+    func xbb_setupNav() {
         self.title = self.contractModel?.statusName
     }
     
-    func setupView() {
-        
+    func xbb_setupView() {
         self.view.backgroundColor = UIColor.white
         
         self.view.addSubview(self.bottomView)
@@ -66,9 +66,41 @@ extension XBBContractInfoViewController {
     }
 }
 
+extension XBBContractInfoViewController {
+    func xbb_loadContract() {
+        self.viewModel.loadContract(model: self.contractModel!) { (contract) in
+            if contract.status == 0 { //待审核
+                let user = UserManager.shard.read()
+                if !self.isProxyC || (user.phoneNumber == contract.phoneNumber) {
+                    self.tableView.snp.updateConstraints { (make) in
+                        make.bottom.equalTo(0)
+                    }
+                } else {
+                    self.bottomView.setButtonTitle(type: .default)
+                }
+            }
+            if contract.status == 2 { //待TA签署
+                self.setRightItem(title: "撤回", titleColor: kTextColor6)
+            }
+            if contract.status == 1 { //待我签署
+                self.bottomView.setButtonTitle(type: .waite)
+            }
+            if contract.status == 4 && !(contract.certificateNumber?.isEmpty)! { //已完成
+                self.bottomView.setButtonTitle(type: .finish)
+            }
+        }
+    }
+    
+    override func clickRightItem(_ button: UIButton) { //撤销合同
+        NSObject.showAlertView(title: "确定要撤销这个合同？", message: nil, cancelTitle: "取消", confirmTitle: "确定", cancelHandel: nil) { (action) in
+            self.viewModel.repealContract(model: self.contractModel!)
+        }
+    }
+}
+
 extension XBBContractInfoViewController: XBBTwoBottomButtonViewDelegate {
     
-    func clickLeftButton(button: UIButton) {
+    func xbb_clickLeftButton(button: UIButton) {
         switch self.contractModel?.status {
 //        case 1: //拒绝签署
 //            let vc = XBBRefuseSignedViewController()
@@ -82,50 +114,18 @@ extension XBBContractInfoViewController: XBBTwoBottomButtonViewDelegate {
         }
     }
     
-    func clickRightButton(button: UIButton) {
+    func xbb_clickRightButton(button: UIButton) {
         switch self.contractModel?.status {
         case 1: //立即签署
             let vc = XBBContractHTMLViewController()
             vc.contractModel = self.contractModel
+            vc.title = "签署合同"
             self.navigationController?.pushViewController(vc, animated: true)
         case 4: //申请出证
             let vc = XBBApplyTestifyViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default: //立即保全
             self.viewModel.preserveContract(model: self.contractModel!, isPreserve: 1)
-        }
-    }
-}
-
-extension XBBContractInfoViewController {
-    
-    func loadContractData() {
-        self.viewModel.loadContract(model: self.contractModel!) { [weak self] (contract) in
-            if contract.status == 0 { //待审核
-                let user = UserManager.shard.read()
-                if !isProxyC || (user.phoneNumber == contract.phoneNumber) {
-                    self!.tableView.snp.updateConstraints { (make) in
-                        make.bottom.equalTo(0)
-                    }
-                } else {
-                    self!.bottomView.setButtonTitle(type: .default)
-                }
-            }
-            if contract.status == 2 { //待TA签署
-                self!.setRightItem(title: "撤回", titleColor: kTextColor6)
-            }
-            if contract.status == 1 { //待我签署
-                self!.bottomView.setButtonTitle(type: .waite)
-            }
-            if contract.status == 4 && !(contract.certificateNumber?.isEmpty)! { //已完成
-                self!.bottomView.setButtonTitle(type: .finish)
-            }
-        }
-    }
-    
-    override func clickRightItem(_ button: UIButton) { //撤销合同
-        NSObject.showAlertView(title: "确定要撤销这个合同？", message: nil, cancelTitle: "取消", confirmTitle: "确定", cancelHandel: nil) { (action) in
-            self.viewModel.repealContract(model: self.contractModel!)
         }
     }
 }

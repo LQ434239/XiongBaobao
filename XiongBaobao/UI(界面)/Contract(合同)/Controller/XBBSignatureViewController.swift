@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol SignatureTopViewDelegate {
-    func clickBackButton()
-    func clickSureButton()
+protocol SignatureTopViewDelegate: NSObjectProtocol {
+    func xbb_clickBackButton()
+    func xbb_clickSureButton()
 }
 
 class SignatureTopView: UIView {
     
-    var delegate: SignatureTopViewDelegate?
+    weak var delegate: SignatureTopViewDelegate?
     
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "nav_back"), for: .normal)
-        button.addTarget(self, action: #selector(clickBackButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickBackButton), for: .touchUpInside)
         return button
     }()
     
@@ -37,20 +37,20 @@ class SignatureTopView: UIView {
         button.titleLabel?.font = FontSize(14)
         button.setTitle("确定", for: .normal)
         button.setTitleColor(kTextColor3, for: .normal)
-        button.addTarget(self, action: #selector(clickSureButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickSureButton), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    func xbb_setupView() {
         self.backgroundColor = UIColor.white
         
         addSubview(self.backButton)
@@ -73,45 +73,45 @@ class SignatureTopView: UIView {
         }
     }
     
-    @objc func clickBackButton() {
-        self.delegate?.clickBackButton()
+    @objc func xbb_clickBackButton() {
+        self.delegate?.xbb_clickBackButton()
     }
     
-    @objc func clickSureButton() {
-        self.delegate?.clickSureButton()
+    @objc func xbb_clickSureButton() {
+        self.delegate?.xbb_clickSureButton()
     }
 }
 
-protocol SignatureToolViewDelegate {
-    func clickChangeColor(button: UIButton)
-    func clickFont(button: UIButton)
-    func clickReset(button: UIButton)
+protocol SignatureToolViewDelegate: NSObjectProtocol {
+    func xbb_clickChangeColor(button: UIButton)
+    func xbb_clickFont(button: UIButton)
+    func xbb_clickReset(button: UIButton)
 }
 
 // MARK: SignatureToolView
 // 画笔颜色、大小
 class SignatureToolView: UIView {
     
-    var delegate: SignatureToolViewDelegate?
+    weak var delegate: SignatureToolViewDelegate?
     
     private lazy var blackButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = kTextColor3
-        button.addTarget(self, action: #selector(clickColorButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickColorButton(button:)), for: .touchUpInside)
         return button
     }()
     
     private lazy var blueButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = kThemeColor
-        button.addTarget(self, action: #selector(clickColorButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickColorButton(button:)), for: .touchUpInside)
         return button
     }()
     
     private lazy var orangeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor.orange
-        button.addTarget(self, action: #selector(clickColorButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickColorButton(button:)), for: .touchUpInside)
         return button
     }()
     
@@ -119,7 +119,7 @@ class SignatureToolView: UIView {
         let button = UIButton(type: .custom)
         button.tag = 6
         button.setImage(UIImage(named: "fine_pen"), for: .normal)
-        button.addTarget(self, action: #selector(clickFontButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickFontButton(button:)), for: .touchUpInside)
         return button
     }()
     
@@ -127,7 +127,7 @@ class SignatureToolView: UIView {
         let button = UIButton(type: .custom)
         button.tag = 8
         button.setImage(UIImage(named: "coarse_pen"), for: .normal)
-        button.addTarget(self, action: #selector(clickFontButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickFontButton(button:)), for: .touchUpInside)
         return button
     }()
     
@@ -136,20 +136,20 @@ class SignatureToolView: UIView {
         button.titleLabel?.font = FontSize(14)
         button.setTitle("重置", for: .normal)
         button.setTitleColor(kTextColor3, for: .normal)
-        button.addTarget(self, action: #selector(clickResetButton(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(xbb_clickResetButton(button:)), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    func xbb_setupView() {
         self.backgroundColor = UIColor.white
         addSubview(self.blackButton)
         self.blackButton.snp.makeConstraints { (make) in
@@ -195,16 +195,16 @@ class SignatureToolView: UIView {
         }
     }
     
-    @objc func clickColorButton(button: UIButton) {
-        self.delegate?.clickChangeColor(button: button)
+    @objc func xbb_clickColorButton(button: UIButton) {
+        self.delegate?.xbb_clickChangeColor(button: button)
     }
     
-    @objc func clickFontButton(button: UIButton) {
-        self.delegate?.clickFont(button: button)
+    @objc func xbb_clickFontButton(button: UIButton) {
+        self.delegate?.xbb_clickFont(button: button)
     }
     
-    @objc func clickResetButton(button: UIButton) {
-        self.delegate?.clickReset(button: button)
+    @objc func xbb_clickResetButton(button: UIButton) {
+        self.delegate?.xbb_clickReset(button: button)
     }
 }
 
@@ -235,7 +235,7 @@ class XBBSignatureViewController: XBBBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        xbb_setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -252,7 +252,7 @@ class XBBSignatureViewController: XBBBaseViewController {
 }
 
 extension XBBSignatureViewController {
-    func setupView() {
+    func xbb_setupView() {
         self.view.addSubview(self.topView)
         self.topView.snp.makeConstraints { (make) in
             make.left.right.top.equalTo(0)
@@ -275,11 +275,11 @@ extension XBBSignatureViewController {
 }
 
 extension XBBSignatureViewController: SignatureTopViewDelegate {
-    func clickBackButton() {
+    func xbb_clickBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func clickSureButton() {
+    func xbb_clickSureButton() {
         if self.drawView.isDraw { 
             if self.signatureBlock != nil {
                 self.signatureBlock!(self.drawView.snapshotImage(), self.drawView.isDraw)
@@ -290,15 +290,15 @@ extension XBBSignatureViewController: SignatureTopViewDelegate {
 }
 
 extension XBBSignatureViewController: SignatureToolViewDelegate {
-    func clickChangeColor(button: UIButton) {
+    func xbb_clickChangeColor(button: UIButton) {
         self.drawView.setPenColor(color: button.backgroundColor!)
     }
     
-    func clickFont(button: UIButton) {
+    func xbb_clickFont(button: UIButton) {
         self.drawView.setPenWidth(width: CGFloat(button.tag))
     }
     
-    func clickReset(button: UIButton) {
+    func xbb_clickReset(button: UIButton) {
         self.drawView.clearScreen()
     }
 }

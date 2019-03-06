@@ -1,5 +1,5 @@
 //
-//  ContractTableViewCell.swift
+//  XBBContractTableViewCell.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/11/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContractTableViewCell: UITableViewCell {
+class XBBContractTableViewCell: UITableViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
@@ -64,7 +64,7 @@ class ContractTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,8 +82,8 @@ class ContractTableViewCell: UITableViewCell {
     }
 }
 
-extension ContractTableViewCell {
-    func setupView() {
+extension XBBContractTableViewCell {
+    func xbb_setupView() {
         self.contentView.addSubview(self.timeLabel)
         let width: CGFloat = "2018-01-01".widthForFont(font: FontSize(12)) + 5
         self.timeLabel.snp.makeConstraints { (make) in

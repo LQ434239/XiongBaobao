@@ -34,7 +34,7 @@
 //服务器地址
 let kBaseURL = "http://test.zfx99.com:8012"
 //http://testxbb.qecity.com
-let kMallBaseURL = "http://testxbb.qecity.com"
+let kMallBaseURL = "http://xbb.qecity.com/Cooperation/Cooperation/index"
 
 // MARK: 其他
 /** 商城上传视频 */

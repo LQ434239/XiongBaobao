@@ -13,7 +13,7 @@ class ContractHTMLlViewModel: NSObject {
     //加载合同
     func loadContract(model: ContractModel, success: @escaping (_ model: ContractModel) -> Void) {
         
-        let parameters = ["transmissionId": model.data_id, "state": model.status!]
+        let parameters = ["transmissionId": model.dataId, "state": model.status!]
         NetworkManager.shard.requestJSONDataWithTarget(target: ContractAPI.contractById(parameters: parameters)) { (status, result, message) in
             if status == .success {
                 guard let jsonDic = result!.dictionaryObject else { return }
@@ -25,9 +25,9 @@ class ContractHTMLlViewModel: NSObject {
     
     //上传签名
     func upload(signature: UIImage) {
-        NetworkManager.shard.requestJSONDataWithTarget(target: OtherAPI.uploadFile(upload: .sign(image:signature , parameters: ["file": signature]))) { (status, result, message) in
-            
-        }
+//        NetworkManager.shard.requestJSONDataWithTarget(target: OtherAPI.uploadFile(upload: .sign(image:signature , parameters: ["file": signature]))) { (status, result, message) in
+//
+//        }
     }
     
     //刷新合同

@@ -10,7 +10,7 @@ import Foundation
 
 let OtherProvider = MoyaProvider<OtherAPI>()
 
-let fileName = ("\(kTimeStamp).png")
+let fileName = ("\(kTimeStamp).mp4")
 
 enum OtherAPI {
     enum upload {

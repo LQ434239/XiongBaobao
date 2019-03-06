@@ -10,10 +10,10 @@ import UIKit
 
 class XBBContractPageViewController: WMPageController {
     
-    var isProxy: Bool = false //解决item分布不均
+    var isProxyC: Bool = false //是否是代理合同
     
     var titleArray: [String] {
-        if self.isProxy {
+        if self.isProxyC {
             return ["全部","待审核","待发送","待我签署","待TA签署","已完成","已拒签","已失效"]
         } else {
             return ["全部","待审核","待我签署","已完成","已拒签","已失效"]
@@ -21,7 +21,7 @@ class XBBContractPageViewController: WMPageController {
     }
     
     var statusArray: [String] {
-        if self.isProxy {
+        if self.isProxyC {
             return ["","0","3","1","2","4","5","6"]
         } else {
             return ["","0","1","4","5","6"]
@@ -36,7 +36,7 @@ class XBBContractPageViewController: WMPageController {
         .takeUntil(self.rx.deallocated) //页面销毁自动移除通知监听
         .subscribe(onNext: { notification in
             let userInfo = notification.userInfo as! [String: Int32]
-            self.selectIndex = isProxyC ? userInfo["index1"]!: userInfo["index0"]!
+            self.selectIndex = self.isProxyC ? userInfo["index1"]!: userInfo["index0"]!
         })
     }
 }
@@ -58,6 +58,7 @@ extension XBBContractPageViewController {
     override func pageController(_ pageController: WMPageController, viewControllerAt index: Int) -> UIViewController {
         let vc = XBBContractViewController()
         vc.status = statusArray[index]
+        vc.isProxyC = self.isProxyC
         return vc
     }
     

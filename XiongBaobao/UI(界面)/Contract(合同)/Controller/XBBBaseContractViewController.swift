@@ -29,7 +29,6 @@ class XBBBaseContractViewController: WMPageController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickSearchItem))
     }
     
@@ -57,13 +56,12 @@ extension XBBBaseContractViewController {
     }
     
     override func pageController(_ pageController: WMPageController, titleAt index: Int) -> String {
-        isProxyC = index == 1
         return ["我的合同","代理合同"][index]
     }
     
     override func pageController(_ pageController: WMPageController, viewControllerAt index: Int) -> UIViewController {
         let vc = XBBContractPageViewController()
-        vc.isProxy = index == 1
+        vc.isProxyC = index == 1
         vc.progressWidth = 30;
         vc.progressViewIsNaughty = true
         vc.progressColor = kThemeColor

@@ -10,7 +10,7 @@ import UIKit
 
 //参数列表
 class ContractParaModel: Mappable {
-    var data_id: Int?
+    var dataId: Int?
     var bgColor: String? //色标
     var parameterName: String? //参数名称
     var parameterPosition: String? //坐标
@@ -19,7 +19,7 @@ class ContractParaModel: Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        data_id <- map["id"]
+        dataId <- map["id"]
         parameterName <- map["parameterName"]
         parameterPosition <- map["parameterPosition"]
         parameterValue <- map["parameterValue"]
@@ -28,7 +28,7 @@ class ContractParaModel: Mappable {
 
 //附件列表
 class AppendiceModel: Mappable {
-    var data_id: Int?
+    var dataId: Int?
     var componentName: String? //名称
     var componentPath: String? //附件路径
     var createTime: String? //创建日期
@@ -36,7 +36,7 @@ class AppendiceModel: Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        data_id <- map["id"]
+        dataId <- map["id"]
         componentName <- map["componentName"]
         componentPath <- map["componentPath"]
         createTime <- map["createTime"]
@@ -44,7 +44,7 @@ class AppendiceModel: Mappable {
 }
 
 class ContractModel: Mappable {
-    var data_id: Int = 0
+    var dataId: Int = 0
     var merchantId: Int? //发送方ID
     var signId: Int? //签署方ID
     var status: Int? //合同状态：0：待审核 1：待我签署 2：待TA签署 3：待发送 4：已完成 5：已拒签 6：已失效
@@ -58,11 +58,11 @@ class ContractModel: Mappable {
     var signName: String?  //签署方名称
     var completeTime: String?  //完成时间
     var statusName: String { //状态名称
-        return statusNames[status!]
+        return self.statusNames[self.status!]
     }
     
     var time: String { //统一时间
-        return (status == 5 ? refuseTime: status == 4 ? completeTime: status == 3 ? "": sendTime)!
+        return (self.status == 5 ? refuseTime: self.status == 4 ? completeTime: self.status == 3 ? "": sendTime)!
     }
     var merchantPhoneNumber: String?  //发送方公司电话
     var certificateNumber: String?  //证书编号
@@ -85,7 +85,7 @@ class ContractModel: Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        data_id <- map["id"]
+        dataId <- map["id"]
         merchantId <- map["createTime"]
         signId <- map["signId"]
         isViewed <- map["isViewed"]

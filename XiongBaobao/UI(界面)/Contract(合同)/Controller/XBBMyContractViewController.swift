@@ -36,10 +36,17 @@ class XBBMyContractViewController: WMPageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(clickSearchItem))
+        xbb_setupNav()
+    }
+}
+
+extension XBBMyContractViewController {
+    
+    func xbb_setupNav() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(xbb_clickSearchItem))
     }
     
-    @objc func clickSearchItem() {
+    @objc func xbb_clickSearchItem() {
         let searchVC = PYSearchViewController(hotSearches:[], searchBarPlaceholder: "搜索") { (vc, searchBar, searchText) in
             
         }

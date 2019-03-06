@@ -27,7 +27,7 @@
 		E11CD15E21BE6F9800965F0D /* XBBPayEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD15D21BE6F9800965F0D /* XBBPayEndViewController.swift */; };
 		E11CD16021BE6FE800965F0D /* XBBSetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD15F21BE6FE800965F0D /* XBBSetPasswordViewController.swift */; };
 		E11CD16221BE700600965F0D /* XBBMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16121BE700600965F0D /* XBBMembersViewController.swift */; };
-		E11CD16421BE702E00965F0D /* XBBWithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16321BE702E00965F0D /* XBBWithdrawalViewController.swift */; };
+		E11CD16421BE702E00965F0D /* XBBWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16321BE702E00965F0D /* XBBWalletViewController.swift */; };
 		E11CD16721BE70D400965F0D /* XBBWithdrawalRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16621BE70D400965F0D /* XBBWithdrawalRecordViewController.swift */; };
 		E11CD16921BE70E100965F0D /* XBBApplyWithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16821BE70E100965F0D /* XBBApplyWithdrawalViewController.swift */; };
 		E11CD16B21BE710C00965F0D /* XBBAddSealOrProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD16A21BE710C00965F0D /* XBBAddSealOrProxyViewController.swift */; };
@@ -36,6 +36,9 @@
 		E130B19C218C1D7500544C99 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E130B19B218C1D7500544C99 /* UserManager.swift */; };
 		E130B1A5218C4A0E00544C99 /* CodeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E130B1A4218C4A0E00544C99 /* CodeMessage.swift */; };
 		E130B1A9218C4CE500544C99 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E130B1A8218C4CE500544C99 /* AlertTextField.swift */; };
+		E13456DB21BFA65900A423CC /* XBBMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13456DA21BFA65900A423CC /* XBBMessageTableViewCell.swift */; };
+		E13456DD21BFB07400A423CC /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13456DC21BFB07400A423CC /* MessageModel.swift */; };
+		E13456DF21BFB08B00A423CC /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13456DE21BFB08B00A423CC /* MessageViewModel.swift */; };
 		E14AE3F321AE35EF00531278 /* JudgeAuthority.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AE3F221AE35EF00531278 /* JudgeAuthority.swift */; };
 		E14AE3F521AE7BDC00531278 /* XBBHomeDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AE3F421AE7BDC00531278 /* XBBHomeDataTableViewCell.swift */; };
 		E14AE3F721AE7C1700531278 /* XBBHomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AE3F621AE7C1700531278 /* XBBHomeListTableViewCell.swift */; };
@@ -50,7 +53,7 @@
 		E14F02A921AF93A7009DFA84 /* XBBContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F02A821AF93A7009DFA84 /* XBBContractViewController.swift */; };
 		E14F02AB21AF98D7009DFA84 /* XBBContractTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F02AA21AF98D7009DFA84 /* XBBContractTableViewCell.swift */; };
 		E14F02B321AFC696009DFA84 /* ContractModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F02B221AFC696009DFA84 /* ContractModel.swift */; };
-		E14F02B521AFD5DB009DFA84 /* ContractListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F02B421AFD5DB009DFA84 /* ContractListViewModel.swift */; };
+		E14F02B521AFD5DB009DFA84 /* ContractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14F02B421AFD5DB009DFA84 /* ContractViewModel.swift */; };
 		E15985E921B8D58D0025CD91 /* ContractHTMLlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15985E821B8D58D0025CD91 /* ContractHTMLlViewModel.swift */; };
 		E15985EB21B8DACB0025CD91 /* XBBWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15985EA21B8DACB0025CD91 /* XBBWKWebView.swift */; };
 		E160AE822187FF59008A2D1D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160AE812187FF59008A2D1D /* HomeViewModel.swift */; };
@@ -64,6 +67,9 @@
 		E1629A9A21B136F60051CCD2 /* XBBContractInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629A9921B136F60051CCD2 /* XBBContractInfoTableViewCell.swift */; };
 		E1629A9C21B13A520051CCD2 /* ContractInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629A9B21B13A520051CCD2 /* ContractInfoViewModel.swift */; };
 		E1629A9E21B13BE00051CCD2 /* XBBContractInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629A9D21B13BE00051CCD2 /* XBBContractInfoHeader.swift */; };
+		E167CE2D21C39804006738B8 /* XBBPreserveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167CE2C21C39804006738B8 /* XBBPreserveTableViewCell.swift */; };
+		E167CE2F21C3987F006738B8 /* PreserveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167CE2E21C3987F006738B8 /* PreserveModel.swift */; };
+		E167CE3121C39E75006738B8 /* PreserveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167CE3021C39E75006738B8 /* PreserveViewModel.swift */; };
 		E1693416216DB27C0083E9CA /* XBBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1693415216DB27C0083E9CA /* XBBBaseViewController.swift */; };
 		E169341A216DB2F30083E9CA /* XBBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1693419216DB2F30083E9CA /* XBBHomeViewController.swift */; };
 		E169341C216DB3600083E9CA /* XBBMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169341B216DB3600083E9CA /* XBBMineViewController.swift */; };
@@ -86,15 +92,14 @@
 		E1698CEE21A7EFCB0013A009 /* ShootToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1698CED21A7EFCB0013A009 /* ShootToolBar.swift */; };
 		E1A3273B215E2AF700A54426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A3273A215E2AF700A54426 /* AppDelegate.swift */; };
 		E1A32742215E2AF900A54426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A32741215E2AF900A54426 /* Assets.xcassets */; };
-		E1A32745215E2AF900A54426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A32743215E2AF900A54426 /* LaunchScreen.storyboard */; };
 		E1B0007521BA669300F8F303 /* XBBSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0007421BA669300F8F303 /* XBBSignatureViewController.swift */; };
 		E1C8A66A21B927D1004BDF1A /* XBBContractParameterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C8A66921B927D1004BDF1A /* XBBContractParameterViewController.swift */; };
 		E1C8A66C21B92C18004BDF1A /* XBBSignContractToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C8A66B21B92C18004BDF1A /* XBBSignContractToolView.swift */; };
 		E1CEFECF216EDEFA0010C43B /* XBBTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFECE216EDEFA0010C43B /* XBBTabBar.swift */; };
 		E1CEFED2216EE1780010C43B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFED1216EE1780010C43B /* UIView+Extension.swift */; };
 		E1CEFEE1216F24100010C43B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEE0216F24100010C43B /* UIImage+Extension.swift */; };
-		E1CEFEEF216F2CBA0010C43B /* XBBConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEEE216F2CBA0010C43B /* XBBConfigurationManager.swift */; };
-		E1CEFEF1216F3B2A0010C43B /* XBBStartAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEF0216F3B2A0010C43B /* XBBStartAPIManager.swift */; };
+		E1CEFEEF216F2CBA0010C43B /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEEE216F2CBA0010C43B /* ConfigurationManager.swift */; };
+		E1CEFEF1216F3B2A0010C43B /* StartAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEF0216F3B2A0010C43B /* StartAPIManager.swift */; };
 		E1CEFEF4216F3E080010C43B /* NSObject+AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEF3216F3E080010C43B /* NSObject+AlertView.swift */; };
 		E1CEFEF6216F3FC00010C43B /* NSObject+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEF5216F3FC00010C43B /* NSObject+Controller.swift */; };
 		E1CEFEFA216F45540010C43B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEFEF9216F45540010C43B /* String+Extension.swift */; };
@@ -103,6 +108,9 @@
 		E1D9E7632174782C0032E39D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9E7622174782C0032E39D /* UIButton+Extension.swift */; };
 		E1D9E76521747DB60032E39D /* XBBEmptyDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9E76421747DB60032E39D /* XBBEmptyDataTableView.swift */; };
 		E1DE60AC217873DD00910EFC /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE60AB217873DD00910EFC /* MBProgressHUD+Extension.swift */; };
+		E1E63DA721C243A00010E0D4 /* SealOrProxyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E63DA621C243A00010E0D4 /* SealOrProxyViewModel.swift */; };
+		E1E63DA921C244610010E0D4 /* ProxyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E63DA821C244610010E0D4 /* ProxyModel.swift */; };
+		E1E63DAB21C244720010E0D4 /* SealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E63DAA21C244720010E0D4 /* SealModel.swift */; };
 		E1E965B9219590B100C4954F /* XBBCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E965B8219590B100C4954F /* XBBCodeScanViewController.swift */; };
 		E1ED618B2193DBC5005416B2 /* UpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED618A2193DBC5005416B2 /* UpdateAlert.swift */; };
 		E1ED618D21941852005416B2 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED618C21941852005416B2 /* DrawView.swift */; };
@@ -111,11 +119,18 @@
 		E1ED619721944262005416B2 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED619621944262005416B2 /* UIImageView+Extension.swift */; };
 		E1EF86CB2179D7AF00FD46ED /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF86CA2179D7AF00FD46ED /* CacheManager.swift */; };
 		E1EF86CD2179DFFD00FD46ED /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF86CC2179DFFD00FD46ED /* NetworkManager.swift */; };
+		E1F2480621C0A90300F02071 /* WeakScriptMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2480521C0A90300F02071 /* WeakScriptMessageDelegate.swift */; };
+		E1F2480B21C0F73F00F02071 /* XBBSealOrProxyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2480A21C0F73F00F02071 /* XBBSealOrProxyTableViewCell.swift */; };
+		E1F2480D21C0FDA300F02071 /* XBBListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2480C21C0FDA300F02071 /* XBBListTableViewCell.swift */; };
+		E1F2480F21C1068C00F02071 /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2480E21C1068C00F02071 /* MineViewModel.swift */; };
+		E1F2481221C118F300F02071 /* XBBCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2481121C118F300F02071 /* XBBCourseTableViewCell.swift */; };
+		E1F2481421C11A8100F02071 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2481321C11A8100F02071 /* CourseModel.swift */; };
+		E1F2481621C11C7000F02071 /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2481521C11C7000F02071 /* CourseViewModel.swift */; };
 		E1F6D01C21B516370015A85E /* XBBPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F6D01B21B516370015A85E /* XBBPlayerViewController.swift */; };
 		E1F6D01E21B52C110015A85E /* XBBHTMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F6D01D21B52C110015A85E /* XBBHTMLViewController.swift */; };
 		E1F77BF421B7B3C9006F5D1C /* XBBCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F77BF321B7B3C9006F5D1C /* XBBCustomTextField.swift */; };
-		E1FAC0742195328F0045D9C1 /* XBBShareSDKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC0732195328F0045D9C1 /* XBBShareSDKHelper.swift */; };
-		E1FAC076219532AF0045D9C1 /* XBBJPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC075219532AF0045D9C1 /* XBBJPushManager.swift */; };
+		E1FAC0742195328F0045D9C1 /* ShareSDKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC0732195328F0045D9C1 /* ShareSDKHelper.swift */; };
+		E1FAC076219532AF0045D9C1 /* JPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC075219532AF0045D9C1 /* JPushManager.swift */; };
 		E1FAC08121953AF00045D9C1 /* QRCodeHelperTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC08021953AF00045D9C1 /* QRCodeHelperTool.swift */; };
 		E1FAC08321953B020045D9C1 /* QRCodeScanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC08221953B020045D9C1 /* QRCodeScanManager.swift */; };
 		E1FAC08521953B130045D9C1 /* QRCodeScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FAC08421953B130045D9C1 /* QRCodeScanningView.swift */; };
@@ -144,7 +159,7 @@
 		E11CD15D21BE6F9800965F0D /* XBBPayEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBPayEndViewController.swift; sourceTree = "<group>"; };
 		E11CD15F21BE6FE800965F0D /* XBBSetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBSetPasswordViewController.swift; sourceTree = "<group>"; };
 		E11CD16121BE700600965F0D /* XBBMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMembersViewController.swift; sourceTree = "<group>"; };
-		E11CD16321BE702E00965F0D /* XBBWithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBWithdrawalViewController.swift; sourceTree = "<group>"; };
+		E11CD16321BE702E00965F0D /* XBBWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBWalletViewController.swift; sourceTree = "<group>"; };
 		E11CD16621BE70D400965F0D /* XBBWithdrawalRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBWithdrawalRecordViewController.swift; sourceTree = "<group>"; };
 		E11CD16821BE70E100965F0D /* XBBApplyWithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBApplyWithdrawalViewController.swift; sourceTree = "<group>"; };
 		E11CD16A21BE710C00965F0D /* XBBAddSealOrProxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBAddSealOrProxyViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +168,9 @@
 		E130B19B218C1D7500544C99 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E130B1A4218C4A0E00544C99 /* CodeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeMessage.swift; sourceTree = "<group>"; };
 		E130B1A8218C4CE500544C99 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		E13456DA21BFA65900A423CC /* XBBMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMessageTableViewCell.swift; sourceTree = "<group>"; };
+		E13456DC21BFB07400A423CC /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		E13456DE21BFB08B00A423CC /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		E14AE3F221AE35EF00531278 /* JudgeAuthority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgeAuthority.swift; sourceTree = "<group>"; };
 		E14AE3F421AE7BDC00531278 /* XBBHomeDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBHomeDataTableViewCell.swift; sourceTree = "<group>"; };
 		E14AE3F621AE7C1700531278 /* XBBHomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBHomeListTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,7 +185,7 @@
 		E14F02A821AF93A7009DFA84 /* XBBContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBContractViewController.swift; sourceTree = "<group>"; };
 		E14F02AA21AF98D7009DFA84 /* XBBContractTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBContractTableViewCell.swift; sourceTree = "<group>"; };
 		E14F02B221AFC696009DFA84 /* ContractModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractModel.swift; sourceTree = "<group>"; };
-		E14F02B421AFD5DB009DFA84 /* ContractListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractListViewModel.swift; sourceTree = "<group>"; };
+		E14F02B421AFD5DB009DFA84 /* ContractViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractViewModel.swift; sourceTree = "<group>"; };
 		E15985E821B8D58D0025CD91 /* ContractHTMLlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractHTMLlViewModel.swift; sourceTree = "<group>"; };
 		E15985EA21B8DACB0025CD91 /* XBBWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBWKWebView.swift; sourceTree = "<group>"; };
 		E160AE812187FF59008A2D1D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +199,9 @@
 		E1629A9921B136F60051CCD2 /* XBBContractInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBContractInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E1629A9B21B13A520051CCD2 /* ContractInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractInfoViewModel.swift; sourceTree = "<group>"; };
 		E1629A9D21B13BE00051CCD2 /* XBBContractInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBContractInfoHeader.swift; sourceTree = "<group>"; };
+		E167CE2C21C39804006738B8 /* XBBPreserveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBPreserveTableViewCell.swift; sourceTree = "<group>"; };
+		E167CE2E21C3987F006738B8 /* PreserveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreserveModel.swift; sourceTree = "<group>"; };
+		E167CE3021C39E75006738B8 /* PreserveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreserveViewModel.swift; sourceTree = "<group>"; };
 		E1693415216DB27C0083E9CA /* XBBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBBaseViewController.swift; sourceTree = "<group>"; };
 		E1693419216DB2F30083E9CA /* XBBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBHomeViewController.swift; sourceTree = "<group>"; };
 		E169341B216DB3600083E9CA /* XBBMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMineViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +211,7 @@
 		E1693427216DCC7C0083E9CA /* XBBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBCommon.swift; sourceTree = "<group>"; };
 		E1693429216DDA1E0083E9CA /* XBBNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBNotificationName.swift; sourceTree = "<group>"; };
 		E1693432216DE05C0083E9CA /* InterfaceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceURL.swift; sourceTree = "<group>"; };
-		E1693434216E064C0083E9CA /* XiongBaobao-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XiongBaobao-Brdging-Header.h"; sourceTree = "<group>"; };
+		E1693434216E064C0083E9CA /* BrdgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrdgingHeader.h; sourceTree = "<group>"; };
 		E1698CCD21A7CA5F0013A009 /* XBBMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMallViewController.swift; sourceTree = "<group>"; };
 		E1698CCF21A7CAB80013A009 /* XBBBaseContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBBaseContractViewController.swift; sourceTree = "<group>"; };
 		E1698CD121A7CB210013A009 /* XBBMyContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBMyContractViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +226,6 @@
 		E1A32737215E2AF700A54426 /* XiongBaobao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiongBaobao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A3273A215E2AF700A54426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A32741215E2AF900A54426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1A32744215E2AF900A54426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A32746215E2AF900A54426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1B0007421BA669300F8F303 /* XBBSignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBSignatureViewController.swift; sourceTree = "<group>"; };
 		E1C8A66921B927D1004BDF1A /* XBBContractParameterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBContractParameterViewController.swift; sourceTree = "<group>"; };
@@ -213,8 +233,8 @@
 		E1CEFECE216EDEFA0010C43B /* XBBTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBTabBar.swift; sourceTree = "<group>"; };
 		E1CEFED1216EE1780010C43B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1CEFEE0216F24100010C43B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		E1CEFEEE216F2CBA0010C43B /* XBBConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBConfigurationManager.swift; sourceTree = "<group>"; };
-		E1CEFEF0216F3B2A0010C43B /* XBBStartAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBStartAPIManager.swift; sourceTree = "<group>"; };
+		E1CEFEEE216F2CBA0010C43B /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		E1CEFEF0216F3B2A0010C43B /* StartAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAPIManager.swift; sourceTree = "<group>"; };
 		E1CEFEF3216F3E080010C43B /* NSObject+AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+AlertView.swift"; sourceTree = "<group>"; };
 		E1CEFEF5216F3FC00010C43B /* NSObject+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Controller.swift"; sourceTree = "<group>"; };
 		E1CEFEF9216F45540010C43B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -223,6 +243,9 @@
 		E1D9E7622174782C0032E39D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		E1D9E76421747DB60032E39D /* XBBEmptyDataTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBEmptyDataTableView.swift; sourceTree = "<group>"; };
 		E1DE60AB217873DD00910EFC /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		E1E63DA621C243A00010E0D4 /* SealOrProxyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealOrProxyViewModel.swift; sourceTree = "<group>"; };
+		E1E63DA821C244610010E0D4 /* ProxyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyModel.swift; sourceTree = "<group>"; };
+		E1E63DAA21C244720010E0D4 /* SealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealModel.swift; sourceTree = "<group>"; };
 		E1E965B8219590B100C4954F /* XBBCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBCodeScanViewController.swift; sourceTree = "<group>"; };
 		E1ED618A2193DBC5005416B2 /* UpdateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlert.swift; sourceTree = "<group>"; };
 		E1ED618C21941852005416B2 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
@@ -231,11 +254,18 @@
 		E1ED619621944262005416B2 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		E1EF86CA2179D7AF00FD46ED /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		E1EF86CC2179DFFD00FD46ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E1F2480521C0A90300F02071 /* WeakScriptMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakScriptMessageDelegate.swift; sourceTree = "<group>"; };
+		E1F2480A21C0F73F00F02071 /* XBBSealOrProxyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBSealOrProxyTableViewCell.swift; sourceTree = "<group>"; };
+		E1F2480C21C0FDA300F02071 /* XBBListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBListTableViewCell.swift; sourceTree = "<group>"; };
+		E1F2480E21C1068C00F02071 /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
+		E1F2481121C118F300F02071 /* XBBCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBCourseTableViewCell.swift; sourceTree = "<group>"; };
+		E1F2481321C11A8100F02071 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		E1F2481521C11C7000F02071 /* CourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel.swift; sourceTree = "<group>"; };
 		E1F6D01B21B516370015A85E /* XBBPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBPlayerViewController.swift; sourceTree = "<group>"; };
 		E1F6D01D21B52C110015A85E /* XBBHTMLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBHTMLViewController.swift; sourceTree = "<group>"; };
 		E1F77BF321B7B3C9006F5D1C /* XBBCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBCustomTextField.swift; sourceTree = "<group>"; };
-		E1FAC0732195328F0045D9C1 /* XBBShareSDKHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBShareSDKHelper.swift; sourceTree = "<group>"; };
-		E1FAC075219532AF0045D9C1 /* XBBJPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBBJPushManager.swift; sourceTree = "<group>"; };
+		E1FAC0732195328F0045D9C1 /* ShareSDKHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSDKHelper.swift; sourceTree = "<group>"; };
+		E1FAC075219532AF0045D9C1 /* JPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushManager.swift; sourceTree = "<group>"; };
 		E1FAC08021953AF00045D9C1 /* QRCodeHelperTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeHelperTool.swift; sourceTree = "<group>"; };
 		E1FAC08221953B020045D9C1 /* QRCodeScanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanManager.swift; sourceTree = "<group>"; };
 		E1FAC08421953B130045D9C1 /* QRCodeScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanningView.swift; sourceTree = "<group>"; };
@@ -299,8 +329,8 @@
 			children = (
 				E11CD16821BE70E100965F0D /* XBBApplyWithdrawalViewController.swift */,
 				E11CD15B21BE6F7B00965F0D /* XBBTopUpViewController.swift */,
+				E11CD16321BE702E00965F0D /* XBBWalletViewController.swift */,
 				E11CD16621BE70D400965F0D /* XBBWithdrawalRecordViewController.swift */,
-				E11CD16321BE702E00965F0D /* XBBWithdrawalViewController.swift */,
 			);
 			path = "钱包";
 			sourceTree = "<group>";
@@ -391,6 +421,13 @@
 			path = "钱包";
 			sourceTree = "<group>";
 		};
+		E12644E021C8CE4E004136C2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E130B195218BF80200544C99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +485,14 @@
 			path = "分享";
 			sourceTree = "<group>";
 		};
+		E13456D921BFA61500A423CC /* 消息 */ = {
+			isa = PBXGroup;
+			children = (
+				E13456DA21BFA65900A423CC /* XBBMessageTableViewCell.swift */,
+			);
+			path = "消息";
+			sourceTree = "<group>";
+		};
 		E14B09272182B9ED0054E494 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				E160AE812187FF59008A2D1D /* HomeViewModel.swift */,
+				E167CE3021C39E75006738B8 /* PreserveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -507,6 +553,10 @@
 		E14B094221832D690054E494 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E1F2481521C11C7000F02071 /* CourseViewModel.swift */,
+				E13456DE21BFB08B00A423CC /* MessageViewModel.swift */,
+				E1F2480E21C1068C00F02071 /* MineViewModel.swift */,
+				E1E63DA621C243A00010E0D4 /* SealOrProxyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -562,11 +612,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E167CE2B21C39759006738B8 /* 保全 */ = {
+			isa = PBXGroup;
+			children = (
+				E167CE2C21C39804006738B8 /* XBBPreserveTableViewCell.swift */,
+			);
+			path = "保全";
+			sourceTree = "<group>";
+		};
 		E169340D216DADF60083E9CA /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E1327E1221BF868E0016DB7D /* 分享 */,
 				E11CD16521BE709100965F0D /* 钱包 */,
+				E13456D921BFA61500A423CC /* 消息 */,
+				E1F2480721C0F60500F02071 /* 印章或授权书 */,
+				E1F2481021C118A400F02071 /* 在线教程 */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -574,6 +635,10 @@
 		E169340E216DADFC0083E9CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1F2481321C11A8100F02071 /* CourseModel.swift */,
+				E13456DC21BFB07400A423CC /* MessageModel.swift */,
+				E1E63DA821C244610010E0D4 /* ProxyModel.swift */,
+				E1E63DAA21C244720010E0D4 /* SealModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,6 +661,7 @@
 		E1693410216DAE0F0083E9CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E167CE2B21C39759006738B8 /* 保全 */,
 				E14AE3F821AE7C4900531278 /* XBBHomeBannerTableViewCell.swift */,
 				E14AE3F421AE7BDC00531278 /* XBBHomeDataTableViewCell.swift */,
 				E14AE3F621AE7C1700531278 /* XBBHomeListTableViewCell.swift */,
@@ -606,6 +672,7 @@
 		E1693411216DAE110083E9CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E167CE2E21C3987F006738B8 /* PreserveModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,7 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				E1693422216DC44F0083E9CA /* Macros */,
-				E1693434216E064C0083E9CA /* XiongBaobao-Brdging-Header.h */,
+				E1693434216E064C0083E9CA /* BrdgingHeader.h */,
 			);
 			path = "Other(其他)";
 			sourceTree = "<group>";
@@ -725,7 +792,7 @@
 			children = (
 				E15985E821B8D58D0025CD91 /* ContractHTMLlViewModel.swift */,
 				E1629A9B21B13A520051CCD2 /* ContractInfoViewModel.swift */,
-				E14F02B421AFD5DB009DFA84 /* ContractListViewModel.swift */,
+				E14F02B421AFD5DB009DFA84 /* ContractViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -736,6 +803,7 @@
 				E1698CCA21A7CA270013A009 /* Controller */,
 				E1698CCB21A7CA300013A009 /* Model */,
 				E1698CCC21A7CA370013A009 /* View */,
+				E12644E021C8CE4E004136C2 /* ViewModel */,
 			);
 			path = "Mall(商城)";
 			sourceTree = "<group>";
@@ -788,6 +856,7 @@
 				E1F77BF321B7B3C9006F5D1C /* XBBCustomTextField.swift */,
 				E1D9E76421747DB60032E39D /* XBBEmptyDataTableView.swift */,
 				E15985EA21B8DACB0025CD91 /* XBBWKWebView.swift */,
+				E1F2480C21C0FDA300F02071 /* XBBListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -796,6 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				E1698CD921A7D2070013A009 /* XBBLayoutModel.swift */,
+				E1F2480521C0A90300F02071 /* WeakScriptMessageDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -865,10 +935,10 @@
 			isa = PBXGroup;
 			children = (
 				E1A3273A215E2AF700A54426 /* AppDelegate.swift */,
-				E1CEFEEE216F2CBA0010C43B /* XBBConfigurationManager.swift */,
-				E1FAC075219532AF0045D9C1 /* XBBJPushManager.swift */,
-				E1FAC0732195328F0045D9C1 /* XBBShareSDKHelper.swift */,
-				E1CEFEF0216F3B2A0010C43B /* XBBStartAPIManager.swift */,
+				E1CEFEEE216F2CBA0010C43B /* ConfigurationManager.swift */,
+				E1FAC075219532AF0045D9C1 /* JPushManager.swift */,
+				E1FAC0732195328F0045D9C1 /* ShareSDKHelper.swift */,
+				E1CEFEF0216F3B2A0010C43B /* StartAPIManager.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -891,7 +961,6 @@
 			isa = PBXGroup;
 			children = (
 				E1A32746215E2AF900A54426 /* Info.plist */,
-				E1A32743215E2AF900A54426 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -982,6 +1051,22 @@
 				E1698CDD21A7D67B0013A009 /* 图片选择 */,
 			);
 			path = "Tools(工具)";
+			sourceTree = "<group>";
+		};
+		E1F2480721C0F60500F02071 /* 印章或授权书 */ = {
+			isa = PBXGroup;
+			children = (
+				E1F2480A21C0F73F00F02071 /* XBBSealOrProxyTableViewCell.swift */,
+			);
+			path = "印章或授权书";
+			sourceTree = "<group>";
+		};
+		E1F2481021C118A400F02071 /* 在线教程 */ = {
+			isa = PBXGroup;
+			children = (
+				E1F2481121C118F300F02071 /* XBBCourseTableViewCell.swift */,
+			);
+			path = "在线教程";
 			sourceTree = "<group>";
 		};
 		E1FAC078219533020045D9C1 /* Expand(扩展) */ = {
@@ -1077,7 +1162,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A32745215E2AF900A54426 /* LaunchScreen.storyboard in Resources */,
 				E1A32742215E2AF900A54426 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1118,10 +1202,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-XiongBaobao/Pods-XiongBaobao-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya-SwiftyJSONMapper/Moya_SwiftyJSONMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -1145,10 +1231,12 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_SwiftyJSONMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -1179,12 +1267,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CEFEE1216F24100010C43B /* UIImage+Extension.swift in Sources */,
+				E167CE2F21C3987F006738B8 /* PreserveModel.swift in Sources */,
 				E160AE8F2188678C008A2D1D /* XBBForgetPwdViewController.swift in Sources */,
+				E13456DF21BFB08B00A423CC /* MessageViewModel.swift in Sources */,
+				E167CE3121C39E75006738B8 /* PreserveViewModel.swift in Sources */,
 				E14AE3F921AE7C4900531278 /* XBBHomeBannerTableViewCell.swift in Sources */,
 				E11CD16721BE70D400965F0D /* XBBWithdrawalRecordViewController.swift in Sources */,
-				E1FAC0742195328F0045D9C1 /* XBBShareSDKHelper.swift in Sources */,
+				E1FAC0742195328F0045D9C1 /* ShareSDKHelper.swift in Sources */,
 				E1ED6193219418F0005416B2 /* DrawiPath.swift in Sources */,
-				E1FAC076219532AF0045D9C1 /* XBBJPushManager.swift in Sources */,
+				E1FAC076219532AF0045D9C1 /* JPushManager.swift in Sources */,
+				E167CE2D21C39804006738B8 /* XBBPreserveTableViewCell.swift in Sources */,
 				E1ED618D21941852005416B2 /* DrawView.swift in Sources */,
 				E11CD13421BE598700965F0D /* URL+Extension.swift in Sources */,
 				E130B19C218C1D7500544C99 /* UserManager.swift in Sources */,
@@ -1195,13 +1287,14 @@
 				E160AE822187FF59008A2D1D /* HomeViewModel.swift in Sources */,
 				E11CD16B21BE710C00965F0D /* XBBAddSealOrProxyViewController.swift in Sources */,
 				E169341E216DB7C90083E9CA /* XBBTabBarController.swift in Sources */,
-				E14F02B521AFD5DB009DFA84 /* ContractListViewModel.swift in Sources */,
-				E1CEFEF1216F3B2A0010C43B /* XBBStartAPIManager.swift in Sources */,
+				E14F02B521AFD5DB009DFA84 /* ContractViewModel.swift in Sources */,
+				E1CEFEF1216F3B2A0010C43B /* StartAPIManager.swift in Sources */,
 				E1D9E7632174782C0032E39D /* UIButton+Extension.swift in Sources */,
 				E1ED6195219425F2005416B2 /* ApplePay.swift in Sources */,
 				E11CD15821BE6ED700965F0D /* XBBTestifyViewController.swift in Sources */,
 				E11CD14D21BE6ADC00965F0D /* XBBTeamViewController.swift in Sources */,
 				E1693420216DB7F00083E9CA /* XBBNavigationController.swift in Sources */,
+				E1F2480621C0A90300F02071 /* WeakScriptMessageDelegate.swift in Sources */,
 				E1693416216DB27C0083E9CA /* XBBBaseViewController.swift in Sources */,
 				E11CD14021BE69BC00965F0D /* XBBSetViewController.swift in Sources */,
 				E14B09322182BA6D0054E494 /* MineAPI.swift in Sources */,
@@ -1210,6 +1303,7 @@
 				E1629A9A21B136F60051CCD2 /* XBBContractInfoTableViewCell.swift in Sources */,
 				E15985EB21B8DACB0025CD91 /* XBBWKWebView.swift in Sources */,
 				E11CD15421BE6C0100965F0D /* XBBCertificateViewController.swift in Sources */,
+				E1F2480B21C0F73F00F02071 /* XBBSealOrProxyTableViewCell.swift in Sources */,
 				E14B092E2182BA500054E494 /* UserAPI.swift in Sources */,
 				E1D9E76521747DB60032E39D /* XBBEmptyDataTableView.swift in Sources */,
 				E14B093A2182BB300054E494 /* HomeAPI.swift in Sources */,
@@ -1229,6 +1323,7 @@
 				E160AE912188680B008A2D1D /* LoginViewModel.swift in Sources */,
 				E1698CE721A7EF480013A009 /* XBBShootPlayerViewController.swift in Sources */,
 				E1698CDF21A7D6C10013A009 /* PhotoSelectedHelper.swift in Sources */,
+				E13456DD21BFB07400A423CC /* MessageModel.swift in Sources */,
 				E1CEFEF4216F3E080010C43B /* NSObject+AlertView.swift in Sources */,
 				E1FAC08121953AF00045D9C1 /* QRCodeHelperTool.swift in Sources */,
 				E1698CE521A7EF1E0013A009 /* XBBShootViewController.swift in Sources */,
@@ -1243,12 +1338,14 @@
 				E11CD13821BE66C700965F0D /* WRNavigationBar.swift in Sources */,
 				E1D4025121B66F8700766538 /* UIButton+MethodExchange.swift in Sources */,
 				E11CD15E21BE6F9800965F0D /* XBBPayEndViewController.swift in Sources */,
+				E1F2481421C11A8100F02071 /* CourseModel.swift in Sources */,
 				E1FAC08321953B020045D9C1 /* QRCodeScanManager.swift in Sources */,
 				E11CD15A21BE6F4700965F0D /* XBBPayViewController.swift in Sources */,
 				E1D4024F21B66B6B00766538 /* XBBApplyTestifyViewController.swift in Sources */,
 				E14AE3FB21AEA6B000531278 /* XBBContractPageViewController.swift in Sources */,
 				E130B1A9218C4CE500544C99 /* AlertTextField.swift in Sources */,
 				E14AE3F521AE7BDC00531278 /* XBBHomeDataTableViewCell.swift in Sources */,
+				E1F2480F21C1068C00F02071 /* MineViewModel.swift in Sources */,
 				E11CD15621BE6E8E00965F0D /* XBBBasePreserveViewController.swift in Sources */,
 				E1DE60AC217873DD00910EFC /* MBProgressHUD+Extension.swift in Sources */,
 				E11CD16021BE6FE800965F0D /* XBBSetPasswordViewController.swift in Sources */,
@@ -1260,19 +1357,23 @@
 				E1629A9E21B13BE00051CCD2 /* XBBContractInfoHeader.swift in Sources */,
 				E1CEFEF6216F3FC00010C43B /* NSObject+Controller.swift in Sources */,
 				E14F02A921AF93A7009DFA84 /* XBBContractViewController.swift in Sources */,
+				E1F2481221C118F300F02071 /* XBBCourseTableViewCell.swift in Sources */,
 				E15985E921B8D58D0025CD91 /* ContractHTMLlViewModel.swift in Sources */,
-				E1CEFEEF216F2CBA0010C43B /* XBBConfigurationManager.swift in Sources */,
+				E1CEFEEF216F2CBA0010C43B /* ConfigurationManager.swift in Sources */,
 				E169341C216DB3600083E9CA /* XBBMineViewController.swift in Sources */,
+				E13456DB21BFA65900A423CC /* XBBMessageTableViewCell.swift in Sources */,
 				E1EF86CB2179D7AF00FD46ED /* CacheManager.swift in Sources */,
 				E130B1A5218C4A0E00544C99 /* CodeMessage.swift in Sources */,
 				E1698CD421A7CE830013A009 /* XBBLineTableViewCell.swift in Sources */,
 				E1A3273B215E2AF700A54426 /* AppDelegate.swift in Sources */,
 				E130B19A218C1A9300544C99 /* UserInfo.swift in Sources */,
+				E1E63DA921C244610010E0D4 /* ProxyModel.swift in Sources */,
 				E11CD16221BE700600965F0D /* XBBMembersViewController.swift in Sources */,
 				E11CD13E21BE69A800965F0D /* XBBMessageViewController.swift in Sources */,
 				E1ED618B2193DBC5005416B2 /* UpdateAlert.swift in Sources */,
 				E1FF3A9A21AD5383007890E8 /* UIViewController+Alter.swift in Sources */,
-				E11CD16421BE702E00965F0D /* XBBWithdrawalViewController.swift in Sources */,
+				E11CD16421BE702E00965F0D /* XBBWalletViewController.swift in Sources */,
+				E1F2480D21C0FDA300F02071 /* XBBListTableViewCell.swift in Sources */,
 				E14B09362182BB0D0054E494 /* PreserveAPI.swift in Sources */,
 				E1C8A66A21B927D1004BDF1A /* XBBContractParameterViewController.swift in Sources */,
 				E160AE85218801C7008A2D1D /* QrCodeAPI.swift in Sources */,
@@ -1282,27 +1383,19 @@
 				E14F02B321AFC696009DFA84 /* ContractModel.swift in Sources */,
 				E1629A9021B112CB0051CCD2 /* XBBContractInfoViewController.swift in Sources */,
 				E1698CDA21A7D2070013A009 /* XBBLayoutModel.swift in Sources */,
+				E1E63DA721C243A00010E0D4 /* SealOrProxyViewModel.swift in Sources */,
 				E1629A9821B12BED0051CCD2 /* XBBTwoBottomButtonView.swift in Sources */,
 				E11CD15221BE6BD700965F0D /* XBBPreserveViewController.swift in Sources */,
 				E1698CD021A7CAB80013A009 /* XBBBaseContractViewController.swift in Sources */,
 				E1CEFECF216EDEFA0010C43B /* XBBTabBar.swift in Sources */,
+				E1F2481621C11C7000F02071 /* CourseViewModel.swift in Sources */,
 				E1698CD221A7CB210013A009 /* XBBMyContractViewController.swift in Sources */,
 				E11CD13C21BE699A00965F0D /* XBBPersonalInfoViewController.swift in Sources */,
+				E1E63DAB21C244720010E0D4 /* SealModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E1A32743215E2AF900A54426 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1A32744215E2AF900A54426 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E1A32747215E2AF900A54426 /* Debug */ = {
@@ -1437,7 +1530,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZFXData.XiongBaobao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiongBaobao/Other(其他)/XiongBaobao-Brdging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiongBaobao/Other(其他)/BrdgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1459,7 +1552,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZFXData.XiongBaobao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiongBaobao/Other(其他)/XiongBaobao-Brdging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiongBaobao/Other(其他)/BrdgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

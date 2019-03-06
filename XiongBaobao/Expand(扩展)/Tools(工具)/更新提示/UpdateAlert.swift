@@ -72,7 +72,7 @@ class UpdateAlert: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,7 +81,7 @@ class UpdateAlert: UIView {
 }
 
 extension UpdateAlert {
-    func setupView() {
+    func xbb_setupView() {
         self.frame = kMainBounds
         self.backgroundColor = colorWithRGBA(0, 0, 0, 0.3)
         

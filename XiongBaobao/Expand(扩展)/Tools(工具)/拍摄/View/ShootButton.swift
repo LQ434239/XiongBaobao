@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol ShootButtonDelegate {
+protocol ShootButtonDelegate: NSObjectProtocol {
     func shootStart(button: ShootButton, progress: CGFloat)
     func shootEnd(button: ShootButton)
 }
 
 class ShootButton: UIView {
     
-    var delegate: ShootButtonDelegate?
+    weak var delegate: ShootButtonDelegate?
     
     var progress: CGFloat = 0
     

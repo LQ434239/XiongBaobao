@@ -8,21 +8,21 @@
 
 import UIKit
 
-protocol ShootCenterButtonDelegate {
+protocol ShootCenterButtonDelegate: NSObjectProtocol {
     func shootStart(button: ShootCenterButton)
     func shootEnd(button: ShootCenterButton)
 }
 
 class ShootCenterButton: UIView {
     
-    var delegate: ShootCenterButtonDelegate?
+    weak var delegate: ShootCenterButtonDelegate?
     
     var path = UIBezierPath()
     var centerLayer = CAShapeLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        xbb_setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +37,7 @@ class ShootCenterButton: UIView {
 }
 
 extension ShootCenterButton {
-    func setupView() {
+    func xbb_setupView() {
         self.centerLayer.frame = self.bounds
         self.centerLayer.path = self.path.cgPath
         self.centerLayer.strokeColor = UIColor(hex: "dad9d6").cgColor

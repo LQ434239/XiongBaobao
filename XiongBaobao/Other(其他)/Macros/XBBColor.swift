@@ -1,5 +1,5 @@
 //
-//  Color.swift
+//  XBBColor.swift
 //  XiongBaobao
 //
 //  Created by 双双 on 2018/10/10.

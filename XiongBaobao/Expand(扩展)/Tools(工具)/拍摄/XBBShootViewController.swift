@@ -8,8 +8,14 @@
 
 import UIKit
 
-class XBBShootViewController: UIViewController {
+protocol XBBShootViewControllerDelegate: NSObjectProtocol {
+    func shootFinish(videoPath: URL)
+}
 
+class XBBShootViewController: UIViewController {
+    
+    weak var delegate: XBBShootViewControllerDelegate?
+    
     //根据输入设备初始化设备输入对象，用于获得输入数据
     private lazy var captureDeviceInput: AVCaptureDeviceInput? = {
         let deviceInput = try? AVCaptureDeviceInput(device: self.camera(position: .back)!)
@@ -66,8 +72,8 @@ class XBBShootViewController: UIViewController {
     }()
     
     //视频保存地址
-    private lazy var localMovieUrl: URL = {
-        let url = URL(fileURLWithPath: NSTemporaryDirectory() + "tem.mp4")
+    private lazy var localVideoUrl: URL = {
+        let url = URL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
         return url
     }()
     
@@ -82,13 +88,9 @@ class XBBShootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if NSObject.judgeSystemAuthority(type: .video) {
-            if !NSObject.judgeSystemAuthority(type: .audio) {
-                return
-            }
-        } else {
-            return
-        }
+        if !NSObject.judgeSystemAuthority(type: .video) { return }
+
+        if !NSObject.judgeSystemAuthority(type: .audio) { return }
         
         self.view.addSubview(self.userCamera)
         self.view.addSubview(self.toolBar)
@@ -184,7 +186,7 @@ extension XBBShootViewController {
             //预览图层和视频方向保持一致
             connection?.videoOrientation = (self.captureVideoPreviewLayer!.connection?.videoOrientation)!
             //开始录制视频使用到了代理 AVCaptureFileOutputRecordingDelegate 同时还有录制视频保存的文件地址
-            self.captureMovieFileOutput.startRecording(to: self.localMovieUrl, recordingDelegate: self)
+            self.captureMovieFileOutput.startRecording(to: self.localVideoUrl, recordingDelegate: self)
         }
     }
     
@@ -216,7 +218,11 @@ extension XBBShootViewController: ShootToolBarDelegate {
         }
         
         if index == 4 { //完成
-            
+            dismiss(animated: true) {
+                self.localVideoUrl.compressionVideo(handler: { (url) in
+                    self.delegate?.shootFinish(videoPath: url)
+                })
+            }
         }
     }
     
@@ -227,7 +233,7 @@ extension XBBShootViewController: ShootToolBarDelegate {
     func shootEnd(button: ShootToolBar) {
         self.view.insertSubview(self.palyerVc.view, aboveSubview: self.userCamera)
         stopRecordVideo()
-        self.palyerVc.url = self.localMovieUrl
+        self.palyerVc.url = self.localVideoUrl
     }
 }
 

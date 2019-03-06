@@ -25,7 +25,7 @@ extension NSObject {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: cancelTitle, style: .default) { (action) in
-            cancelHandel!(action)
+            cancelHandel?(action)
         }
         let confirm = UIAlertAction(title: confirmTitle, style: .default) { (action) in
             confirmHandler(action)

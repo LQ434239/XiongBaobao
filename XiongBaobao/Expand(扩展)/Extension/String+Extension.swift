@@ -67,6 +67,14 @@ extension String {
         return result
     }
     
+    //去掉html中的标签
+    func removeHtmlLabel() -> String {
+        if let regularExpretion = try? NSRegularExpression(pattern: "<[^>]*>|\n", options: [])  {
+            return regularExpretion.stringByReplacingMatches(in: self, options: .reportProgress, range: NSRange(location: 0, length: self.count), withTemplate: "")
+        }
+        return ""
+    }
+    
     // 截取从index位开始之前的字符串
     func subString(to index: Int) -> String {
         return String(self[..<self.index(self.startIndex, offsetBy: index)])
